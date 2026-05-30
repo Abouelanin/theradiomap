@@ -97,8 +97,8 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text);fon
 #clr:hover{color:var(--amalfi)}
 
 /* PANELS */
-.panel{display:none;flex-direction:column;flex:1;overflow:hidden}
-.panel.on{display:flex}
+.panel{display:none;flex-direction:column;flex:1;overflow:hidden;min-height:0}
+.panel.on{display:flex;min-height:0}
 
 /* RECENT */
 #recent-section{padding:7px 12px 5px;border-bottom:1px solid var(--border);flex-shrink:0;display:none}
@@ -109,9 +109,9 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text);fon
 .recent-chip:hover{border-color:var(--citrus);color:var(--citrus2)}
 
 /* FAV PANEL */
-#fav-panel{display:none;flex-direction:column;flex:1;overflow:hidden}
-#fav-panel.on{display:flex}
-#fav-list{flex:1;overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--border2) transparent}
+#fav-panel{display:none;flex-direction:column;flex:1;overflow:hidden;min-height:0}
+#fav-panel.on{display:flex;min-height:0}
+#fav-list{flex:1;overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--border2) transparent;min-height:0}
 #fav-empty{padding:28px;text-align:center;color:var(--text3);font-size:13px}
 
 /* GENRE FILTERS */
@@ -121,14 +121,14 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text);fon
 .gtag.on{background:var(--amalfi);border-color:var(--amalfi);color:#fff}
 
 /* COUNTRY PANEL */
-#country-panel{display:none;flex-direction:column;flex:1;overflow:hidden}
-#country-panel.on{display:flex}
+#country-panel{display:none;flex-direction:column;flex:1;overflow:hidden;min-height:0}
+#country-panel.on{display:flex;min-height:0}
 #region-bar{display:flex;gap:5px;padding:8px 11px;border-bottom:1px solid var(--border);overflow-x:auto;scrollbar-width:none;flex-shrink:0;background:var(--bg2)}
 #region-bar::-webkit-scrollbar{display:none}
 .rtag{flex-shrink:0;font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;border:1.5px solid var(--border2);background:var(--bg1);color:var(--text2);cursor:pointer;transition:all 0.15s}
 .rtag:hover{border-color:var(--citrus);color:var(--citrus2)}
 .rtag.on{background:var(--citrus);border-color:var(--citrus);color:#fff}
-#country-list{flex:1;overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--border2) transparent}
+#country-list{flex:1;overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--border2) transparent;min-height:0}
 #country-list::-webkit-scrollbar{width:3px}
 #country-list::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px}
 .crow{display:flex;align-items:center;gap:9px;padding:8px 13px;cursor:pointer;border-left:3px solid transparent;transition:background 0.1s}
@@ -141,9 +141,9 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text);fon
 .cbadge{font-size:10px;font-weight:800;color:var(--amalfi);background:rgba(46,90,167,0.1);padding:2px 7px;border-radius:10px;flex-shrink:0}
 
 /* LANG PANEL */
-#lang-panel{display:none;flex-direction:column;flex:1;overflow:hidden}
-#lang-panel.on{display:flex}
-#lang-list{flex:1;overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--border2) transparent}
+#lang-panel{display:none;flex-direction:column;flex:1;overflow:hidden;min-height:0}
+#lang-panel.on{display:flex;min-height:0}
+#lang-list{flex:1;overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--border2) transparent;min-height:0}
 #lang-list::-webkit-scrollbar{width:3px}
 #lang-list::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px}
 .lrow{display:flex;align-items:center;gap:9px;padding:8px 13px;cursor:pointer;border-left:3px solid transparent;transition:background 0.1s}
@@ -158,7 +158,7 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text);fon
 #slist-meta{padding:7px 13px 3px;display:flex;justify-content:space-between;align-items:center;flex-shrink:0}
 .slist-lbl{font-size:9px;font-weight:800;color:var(--text3);text-transform:uppercase;letter-spacing:0.08em}
 #slist-count{font-size:10px;font-weight:800;color:var(--amalfi)}
-#slist-wrap{flex:1;overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--border2) transparent}
+#slist-wrap{flex:1;overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--border2) transparent;min-height:0}
 #slist-wrap::-webkit-scrollbar{width:3px}
 #slist-wrap::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px}
 .srow{display:flex;align-items:center;gap:8px;padding:7px 13px;cursor:pointer;border-left:3px solid transparent;transition:background 0.1s}
@@ -383,15 +383,7 @@ body.dark #mob-btn{background:rgba(26,37,64,0.96)}
       <button id="dark-btn" onclick="toggleDark()" title="Dark mode"><i class="ti ti-moon" id="dark-ico"></i></button>
     </div>
   </div>
-  <div id="ad-top" style="margin:7px 11px 0;text-align:center;min-height:50px">
-  <ins class="adsbygoogle"
-    style="display:block;width:100%;min-height:50px"
-    data-ad-client="ca-pub-1857852651939513"
-    data-ad-slot="auto"
-    data-ad-format="auto"
-    data-full-width-responsive="true"></ins>
-  <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
-</div>
+  
   <div id="tabs">
     <button class="tab on" onclick="switchTab('stations',this)"><i class="ti ti-wave-sine"></i>Stations</button>
     <button class="tab" onclick="switchTab('fav',this)"><i class="ti ti-heart"></i>Saved</button>
@@ -412,7 +404,7 @@ body.dark #mob-btn{background:rgba(26,37,64,0.96)}
 
   <!-- FAV PANEL -->
   <div id="fav-panel">
-    <div id="slist-meta" style="padding:7px 13px 3px;display:flex;justify-content:space-between;align-items:center;flex-shrink:0">
+    <div id="fav-meta" style="padding:7px 13px 3px;display:flex;justify-content:space-between;align-items:center;flex-shrink:0">
       <span class="slist-lbl">Saved stations</span>
       <span id="fav-count" style="font-size:10px;font-weight:800;color:var(--amalfi)"></span>
     </div>
@@ -500,15 +492,7 @@ body.dark #mob-btn{background:rgba(26,37,64,0.96)}
     <button class="sleep-btn" onclick="setSleep(0)">Off</button>
     <span id="sleep-cd"></span>
   </div>
-  <div id="ad-bottom" style="margin:0 11px 7px;text-align:center;min-height:50px">
-  <ins class="adsbygoogle"
-    style="display:block;width:100%;min-height:50px"
-    data-ad-client="ca-pub-1857852651939513"
-    data-ad-slot="auto"
-    data-ad-format="auto"
-    data-full-width-responsive="true"></ins>
-  <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
-</div>
+  
 </div>
 
 <!-- MAP -->
@@ -911,7 +895,7 @@ function renderList(){
   let html='';
   shown.forEach((s,idx)=>{
     if(idx===20&&filtered.length>20){
-      html+='<div style="margin:5px 12px;text-align:center"><ins class="adsbygoogle" style="display:block;width:100%;min-height:44px" data-ad-client="ca-pub-1857852651939513" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});<\/script></div>';
+      /* mid ad removed */
     }
     const i=allStations.indexOf(s);
     const c=gColor(s.genre),gc=GENRE_CLASS[s.genre]||'g-default';

@@ -298,7 +298,60 @@ body.dark #mob-btn{background:rgba(26,37,64,0.96)}
     <div class="g-ring"></div>
     <div class="g-ring"></div>
     <div class="g-ring"></div>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Blue_Marble_2002.png/600px-Blue_Marble_2002.png" alt="World globe">
+    <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;border-radius:50%;display:block">
+  <defs>
+    <radialGradient id="ocean" cx="35%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#1a5498"/>
+      <stop offset="60%" stop-color="#0d3272"/>
+      <stop offset="100%" stop-color="#071840"/>
+    </radialGradient>
+    <radialGradient id="shine" cx="28%" cy="22%" r="55%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.22)"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+    </radialGradient>
+    <clipPath id="gc"><circle cx="150" cy="150" r="150"/></clipPath>
+  </defs>
+  <circle cx="150" cy="150" r="150" fill="url(#ocean)"/>
+  <g clip-path="url(#gc)" fill="#1a6b3c" opacity="0.85">
+    <!-- North America -->
+    <polygon points="28,58 72,52 90,68 85,95 70,115 55,118 40,108 22,90"/>
+    <polygon points="35,50 65,44 75,52 68,62 48,64 32,58"/>
+    <!-- Greenland -->
+    <polygon points="92,28 115,22 118,38 108,48 90,46"/>
+    <!-- South America -->
+    <polygon points="85,130 105,122 118,135 115,165 105,185 90,182 78,162 72,142"/>
+    <!-- Europe -->
+    <polygon points="145,58 165,55 172,68 162,78 148,76 138,68"/>
+    <!-- Africa -->
+    <polygon points="148,80 175,78 188,95 185,130 175,155 158,158 142,145 135,115 138,92"/>
+    <!-- Middle East / Arabia -->
+    <polygon points="178,82 195,80 202,92 198,108 182,112 172,98"/>
+    <!-- Asia -->
+    <polygon points="175,52 238,48 252,62 258,88 245,105 222,115 198,112 175,95 165,75"/>
+    <!-- Indian subcontinent -->
+    <polygon points="205,108 222,105 228,125 218,142 205,138 198,122"/>
+    <!-- SE Asia -->
+    <polygon points="238,102 258,95 268,108 262,122 245,125 232,118"/>
+    <!-- Australia -->
+    <polygon points="232,168 265,162 272,178 268,198 248,208 228,200 220,182"/>
+    <!-- Japan -->
+    <polygon points="262,72 272,68 275,78 265,85 258,80"/>
+    <!-- UK/Ireland -->
+    <polygon points="140,60 148,56 150,64 142,68"/>
+  </g>
+  <!-- Grid lines (parallels and meridians) -->
+  <g clip-path="url(#gc)" stroke="rgba(255,255,255,0.07)" stroke-width="0.5" fill="none">
+    <ellipse cx="150" cy="150" rx="150" ry="40"/>
+    <ellipse cx="150" cy="150" rx="150" ry="90"/>
+    <ellipse cx="150" cy="150" rx="150" ry="130"/>
+    <line x1="0" y1="150" x2="300" y2="150"/>
+    <line x1="75" y1="0" x2="75" y2="300"/>
+    <line x1="150" y1="0" x2="150" y2="300"/>
+    <line x1="225" y1="0" x2="225" y2="300"/>
+  </g>
+  <!-- Sphere shine -->
+  <circle cx="150" cy="150" r="150" fill="url(#shine)"/>
+</svg>
     <div class="p-dot"></div>
     <div class="p-dot"></div>
     <div class="p-dot"></div>

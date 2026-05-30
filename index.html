@@ -7,6 +7,8 @@
 <meta name="description" content="Explore thousands of live radio stations from every country. One map. Every voice on Earth.">
 <link rel="manifest" id="pwa-manifest">
 <meta name="theme-color" content="#2E5AA7">
+<meta name="google-adsense-account" content="ca-pub-1857852651939513">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1857852651939513" crossorigin="anonymous"></script>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="The Radio Map">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -381,7 +383,15 @@ body.dark #mob-btn{background:rgba(26,37,64,0.96)}
       <button id="dark-btn" onclick="toggleDark()" title="Dark mode"><i class="ti ti-moon" id="dark-ico"></i></button>
     </div>
   </div>
-  <div class="ad-slot" id="ad-top"><span class="ad-label">AD</span><span>Google AdSense banner (728x90)</span></div>
+  <div id="ad-top" style="margin:7px 11px 0;text-align:center;min-height:50px">
+  <ins class="adsbygoogle"
+    style="display:block;width:100%;min-height:50px"
+    data-ad-client="ca-pub-1857852651939513"
+    data-ad-slot="auto"
+    data-ad-format="auto"
+    data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+</div>
   <div id="tabs">
     <button class="tab on" onclick="switchTab('stations',this)"><i class="ti ti-wave-sine"></i>Stations</button>
     <button class="tab" onclick="switchTab('fav',this)"><i class="ti ti-heart"></i>Saved</button>
@@ -490,7 +500,15 @@ body.dark #mob-btn{background:rgba(26,37,64,0.96)}
     <button class="sleep-btn" onclick="setSleep(0)">Off</button>
     <span id="sleep-cd"></span>
   </div>
-  <div class="ad-slot" id="ad-bottom"><span class="ad-label">AD</span><span>Google AdSense square (300x250)</span></div>
+  <div id="ad-bottom" style="margin:0 11px 7px;text-align:center;min-height:50px">
+  <ins class="adsbygoogle"
+    style="display:block;width:100%;min-height:50px"
+    data-ad-client="ca-pub-1857852651939513"
+    data-ad-slot="auto"
+    data-ad-format="auto"
+    data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+</div>
 </div>
 
 <!-- MAP -->
@@ -893,7 +911,7 @@ function renderList(){
   let html='';
   shown.forEach((s,idx)=>{
     if(idx===20&&filtered.length>20){
-      html+='<div class="ad-slot" style="margin:5px 12px;height:44px;flex-shrink:0"><span class="ad-label">AD</span><span style="font-size:10px;font-weight:700">AdSense mid-list banner</span></div>';
+      html+='<div style="margin:5px 12px;text-align:center"><ins class="adsbygoogle" style="display:block;width:100%;min-height:44px" data-ad-client="ca-pub-1857852651939513" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});<\/script></div>';
     }
     const i=allStations.indexOf(s);
     const c=gColor(s.genre),gc=GENRE_CLASS[s.genre]||'g-default';

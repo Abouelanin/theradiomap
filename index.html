@@ -348,11 +348,16 @@ body.dark #map-breadcrumb{background:rgba(22,32,53,0.96)}
 #back-btn:hover{text-decoration:underline}
 #area-btn{position:absolute;bottom:52px;right:12px;z-index:500;
   font-size:11px;font-weight:800;font-family:var(--font);
-  background:rgba(255,255,255,0.97);border:1.5px solid var(--border2);
-  border-radius:10px;padding:7px 12px;box-shadow:var(--shadow2);
-  cursor:pointer;color:var(--amalfi);transition:all 0.15s}
+  background:rgba(255,255,255,0.97);border:1.5px solid var(--amalfi);
+  border-radius:10px;padding:8px 14px;box-shadow:var(--shadow2);
+  cursor:pointer;color:var(--amalfi);transition:all 0.2s;
+  display:flex;align-items:center;gap:7px}
 body.dark #area-btn{background:rgba(22,32,53,0.97)}
 #area-btn:hover{background:var(--amalfi);color:#fff;border-color:var(--amalfi)}
+#area-count{background:var(--amalfi);color:#fff;border-radius:20px;
+  padding:1px 8px;font-size:10px;font-weight:800;min-width:20px;text-align:center;
+  transition:all 0.3s}
+#area-btn:hover #area-count{background:rgba(255,255,255,0.3)}
 #map-hint{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);z-index:500;
   font-size:10px;font-weight:700;color:var(--text2);
   background:rgba(255,255,255,0.92);border:1px solid var(--border);
@@ -722,8 +727,7 @@ body.dark #mob-btn{background:rgba(22,32,53,0.96)}
         <span id="play-txt">Play</span>
       </button>
       <button class="ibtn" id="vol-btn" onclick="toggleMute()"><i class="ti ti-volume" id="vol-ico"></i></button>
-      <button class="ibtn" onclick="shareStation()" title="Share station"><i class="ti ti-share"></i></button>
-      <button class="ibtn" onclick="toggleSleepBar()"><i class="ti ti-moon"></i></button>
+      <button class="ibtn" id="np-fav-btn" onclick="toggleFavCurrent()" title="Save station"><i class="ti ti-heart" id="np-fav-ico" style="font-size:16px"></i></button>
     </div>
     <div id="waveform">
       <div class="wb" style="--d:.55s;--dl:0s"></div><div class="wb" style="--d:.70s;--dl:.07s"></div>
@@ -754,7 +758,11 @@ body.dark #mob-btn{background:rgba(22,32,53,0.96)}
     <button id="back-btn" onclick="resetView()"><i class="ti ti-arrow-left"></i> All</button>
     <span id="crumb-txt" style="color:var(--text2)"></span>
   </div>
-  <button id="area-btn" onclick="filterByArea()">📍 Stations in this area <span id="area-count" style="background:rgba(46,90,167,0.15);color:var(--amalfi);border-radius:10px;padding:1px 7px;font-size:10px;font-weight:800;margin-left:4px"></span></button>
+  <button id="area-btn" onclick="filterByArea()">
+    <i class="ti ti-map-pin" style="font-size:14px"></i>
+    <span>Stations in this area</span>
+    <span id="area-count"></span>
+  </button>
   <div id="map-hint">Click a dot to listen &nbsp;·&nbsp; Scroll to zoom</div>
 </div>
 </main>
@@ -1386,7 +1394,7 @@ function renderList(){
       <div class="sdot" style="${isOn?'background:'+c+';box-shadow:0 0 7px '+c+'80':''}"></div>
       <div class="sinfo">
         <div class="sname">${FLAGS[s.country]||''} ${s.name}</div>
-        <div class="sloc">${s.city}, ${s.country}</div>
+        <div class="sloc">${(s.city&&s.city!==s.country&&s.city!=='')?s.city+', '+s.country:s.country}</div>
       </div>
       <span class="stag ${gc}" style="${isOn?'background:'+c+'22;color:'+c:''}">${s.genre}</span>
       <button class="fav-btn${isFav?' on':''}" onclick="event.stopPropagation();toggleFav(${i})">
@@ -1405,7 +1413,12 @@ function loadMore(){showCount+=60;renderList();}
 function selectStation(i){
   activeIdx=i;const s=allStations[i];
   document.getElementById('np-name').textContent=s.name;
-  document.getElementById('np-loc').textContent=(FLAGS[s.country]||'')+' '+s.city+', '+s.country+' · '+s.genre;
+  updateNpFavBtn();
+  // Fix duplicate city/country (e.g. "Egypt, Egypt" → just "Egypt")
+  const locStr=s.city&&s.city!==s.country&&s.city!==''
+    ?(FLAGS[s.country]||'')+' '+s.city+', '+s.country
+    :(FLAGS[s.country]||'')+' '+s.country;
+  document.getElementById('np-loc').textContent=locStr+' · '+s.genre;
   document.getElementById('play-btn').disabled=false;
   placeMarkers();renderList();
   map.flyTo([s.lat,s.lon],Math.max(map.getZoom(),5),{duration:0.8,animate:true});
@@ -1550,6 +1563,24 @@ function toggleFav(i){
   else{favs.splice(idx,1);showToast('Removed from saved');}
   localStorage.setItem('rm_favs',JSON.stringify(favs));
   renderList();renderFavs();
+  updateNpFavBtn();
+}
+
+// Toggle favourite for currently playing station
+function toggleFavCurrent(){
+  if(activeIdx===null)return;
+  toggleFav(activeIdx);
+}
+
+// Update the heart button in the player
+function updateNpFavBtn(){
+  const btn=document.getElementById('np-fav-btn');
+  const ico=document.getElementById('np-fav-ico');
+  if(!btn||!ico||activeIdx===null)return;
+  const isFav=favs.includes(activeIdx);
+  ico.className=isFav?'ti ti-heart-filled':'ti ti-heart';
+  ico.style.color=isFav?'#EF4444':'';
+  btn.title=isFav?'Remove from saved':'Save station';
 }
 function renderFavs(){
   const fl=document.getElementById('fav-list'),fe=document.getElementById('fav-empty');
@@ -1561,7 +1592,7 @@ function renderFavs(){
     return`<div class="srow${isOn?' on':''}" onclick="selectStation(${i})">
       <div class="sdot" style="background:${c}"></div>
       <div class="sinfo"><div class="sname">${FLAGS[s.country]||''} ${s.name}</div>
-      <div class="sloc">${s.city}, ${s.country}</div></div>
+      <div class="sloc">${(s.city&&s.city!==s.country&&s.city!=='')?s.city+', '+s.country:s.country}</div></div>
       <span class="stag ${gc}">${s.genre}</span>
       <button class="fav-btn on" onclick="event.stopPropagation();toggleFav(${i})">
         <i class="ti ti-heart-filled" style="font-size:14px"></i></button>
@@ -1646,13 +1677,20 @@ function filterByArea(){
   if(!map)return;
   const bounds=map.getBounds();
   const area=allStations.filter(s=>bounds.contains([s.lat,s.lon]));
-  if(!area.length){showToast('No stations here — zoom into a region');return;}
+  if(!area.length){
+    showToast('No stations in this area — try zooming out or panning to a different region');
+    return;
+  }
   filtered=area;showCount=60;activeCountry=null;activeLang=null;
-  goToStations();renderList();
+  searchQ='';document.getElementById('search').value='';
+  document.getElementById('clr').style.display='none';
+  goToStations();
+  renderList();
   document.getElementById('map-breadcrumb').style.display='flex';
-  document.getElementById('crumb-txt').textContent='Stations in this area · '+area.length;
+  document.getElementById('crumb-txt').textContent='📍 Stations in view · '+area.length;
   showToast('📍 '+area.length+' stations in this area');
-  if(window.innerWidth<=740)openSidebar();
+  // Always open sidebar so user sees the results
+  openSidebar();
 }
 
 // ── AUTO AREA COUNT — updates as map moves ──
@@ -1723,7 +1761,7 @@ async function fetchLive(){
   const parsed=live.filter(s=>s.geo_lat&&s.geo_long&&s.url_resolved)
     .map(s=>({
       name:s.name.trim().slice(0,55),country:s.country||'Unknown',
-      city:s.state||s.country||'',genre:mapGenre(s.tags),
+      city:s.state||s.country||'',genre:mapGenre(s.tags,s.name),
       lat:parseFloat(s.geo_lat),lon:parseFloat(s.geo_long),url:s.url_resolved
     })).filter(s=>s.name&&Math.abs(s.lat)<=90&&Math.abs(s.lon)<=180&&!existing.has(s.name.toLowerCase()));
   allStations=[...CURATED,...parsed];
@@ -1734,7 +1772,13 @@ async function fetchLive(){
   setTimeout(preloadUrls,2000);
 }
 
-function mapGenre(tags){
+function mapGenre(tags,name){
+  // Override by station name first
+  if(name){
+    const n=name.toLowerCase();
+    if(n.includes('quran')||n.includes('قرآن')||n.includes('quraan')||n.includes('kuran'))return'Religious';
+    if(n.includes('islam')||n.includes('إسلام'))return'Religious';
+  }
   if(!tags)return'Music';const t=tags.toLowerCase();
   if(t.includes('arab')||t.includes('quran'))return'Arabic';
   if(t.includes('religious')||t.includes('gospel')||t.includes('christian')||t.includes('islam'))return'Religious';

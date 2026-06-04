@@ -11,6 +11,7 @@
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
 <meta name="language" content="English, Arabic">
 <meta name="revisit-after" content="3 days">
+<meta name="google-site-verification" content="google53a5f25037e71044">
 <link rel="canonical" href="https://theradiomap.com/">
 <link rel="alternate" hreflang="en" href="https://theradiomap.com/">
 <link rel="alternate" hreflang="ar" href="https://theradiomap.com/">
@@ -643,7 +644,7 @@ body.dark #mob-btn{background:rgba(22,32,53,0.96)}
   <div id="quick-bar">
     <button class="qbtn" onclick="randomStation()" title="Random station"><i class="ti ti-dice"></i>Random</button>
     <button class="qbtn" onclick="filterByArea()" title="Stations near me"><i class="ti ti-map-pin"></i>Near me</button>
-    <button class="qbtn" onclick="shareWhatsApp()" title="Share on WhatsApp"><i class="ti ti-brand-whatsapp"></i>Share</button>
+    <button class="qbtn" id="fav-qbtn" onclick="switchTab('fav',this)" title="Saved stations"><i class="ti ti-heart"></i>Saved</button>
     <button class="qbtn" id="sleep-qbtn" onclick="toggleSleepBar()" title="Sleep timer"><i class="ti ti-moon-stars"></i>Sleep</button>
   </div>
 
@@ -677,19 +678,7 @@ body.dark #mob-btn{background:rgba(22,32,53,0.96)}
 
   <!-- STATIONS PANEL -->
   <div class="panel on" id="panel-stations">
-    <div id="genre-filters">
-      <button class="gtag on" data-g="all">All</button>
-      <button class="gtag" data-g="Arabic">🌙 Arabic</button>
-      <button class="gtag" data-g="Religious">🕌 Quran</button>
-      <button class="gtag" data-g="News">📰 News</button>
-      <button class="gtag" data-g="Music">🎵 Music</button>
-      <button class="gtag" data-g="Pop">🎤 Pop</button>
-      <button class="gtag" data-g="Talk">🎙 Talk</button>
-      <button class="gtag" data-g="Jazz">🎷 Jazz</button>
-      <button class="gtag" data-g="Classical">🎻 Classical</button>
-      <button class="gtag" data-g="Rock">🎸 Rock</button>
-      <button class="gtag" data-g="Sports">⚽ Sports</button>
-    </div>
+
     <div id="slist-meta">
       <span class="slist-lbl">Stations</span>
       <span id="slist-count">Loading...</span>
@@ -733,7 +722,7 @@ body.dark #mob-btn{background:rgba(22,32,53,0.96)}
         <span id="play-txt">Play</span>
       </button>
       <button class="ibtn" id="vol-btn" onclick="toggleMute()"><i class="ti ti-volume" id="vol-ico"></i></button>
-      <button class="ibtn" onclick="shareWhatsApp()" title="Share on WhatsApp"><i class="ti ti-brand-whatsapp"></i></button>
+      <button class="ibtn" onclick="shareStation()" title="Share station"><i class="ti ti-share"></i></button>
       <button class="ibtn" onclick="toggleSleepBar()"><i class="ti ti-moon"></i></button>
     </div>
     <div id="waveform">
@@ -765,7 +754,7 @@ body.dark #mob-btn{background:rgba(22,32,53,0.96)}
     <button id="back-btn" onclick="resetView()"><i class="ti ti-arrow-left"></i> All</button>
     <span id="crumb-txt" style="color:var(--text2)"></span>
   </div>
-  <button id="area-btn" onclick="filterByArea()">📍 Stations in this area</button>
+  <button id="area-btn" onclick="filterByArea()">📍 Stations in this area <span id="area-count" style="background:rgba(46,90,167,0.15);color:var(--amalfi);border-radius:10px;padding:1px 7px;font-size:10px;font-weight:800;margin-left:4px"></span></button>
   <div id="map-hint">Click a dot to listen &nbsp;·&nbsp; Scroll to zoom</div>
 </div>
 </main>
@@ -1012,7 +1001,229 @@ const CURATED=[
   {name:'Radio Lagos',country:'Nigeria',city:'Lagos',genre:'Music',lat:6.52,lon:3.38,url:null},
   {name:'Metro FM SA',country:'South Africa',city:'Johannesburg',genre:'Pop',lat:-26.20,lon:28.04,url:null},
   {name:'Radio Kenya',country:'Kenya',city:'Nairobi',genre:'Talk',lat:-1.29,lon:36.82,url:null},
-  {name:'Radio Senegal',country:'Senegal',city:'Dakar',genre:'Music',lat:14.69,lon:-17.44,url:null}
+  {name:'Radio Senegal',country:'Senegal',city:'Dakar',genre:'Music',lat:14.69,lon:-17.44,url:null},
+
+  // ── MORE ARAB STATIONS ──
+  // Egypt
+  {name:'Radio One Egypt',country:'Egypt',city:'Cairo',genre:'Pop',lat:30.07,lon:31.23,url:null},
+  {name:'Capital FM Egypt',country:'Egypt',city:'Cairo',genre:'Pop',lat:30.08,lon:31.27,url:null},
+  {name:'Radio Cairo',country:'Egypt',city:'Cairo',genre:'Talk',lat:30.01,lon:31.19,url:null},
+  {name:'Radio Masr Al Mahrousa',country:'Egypt',city:'Cairo',genre:'Arabic',lat:30.03,lon:31.21,url:null},
+  {name:'Nagham FM',country:'Egypt',city:'Cairo',genre:'Music',lat:30.09,lon:31.29,url:null},
+  {name:'Radio Shams',country:'Egypt',city:'Cairo',genre:'Arabic',lat:30.04,lon:31.17,url:null},
+  {name:'Mix One Egypt',country:'Egypt',city:'Cairo',genre:'Electronic',lat:30.06,lon:31.30,url:null},
+  // Saudi Arabia
+  {name:'Arab Radio Network',country:'Saudi Arabia',city:'Riyadh',genre:'Arabic',lat:24.65,lon:46.75,url:null},
+  {name:'Energy FM Saudi',country:'Saudi Arabia',city:'Riyadh',genre:'Pop',lat:24.72,lon:46.80,url:null},
+  {name:'98 FM Saudi',country:'Saudi Arabia',city:'Jeddah',genre:'Pop',lat:21.55,lon:39.22,url:null},
+  {name:'Radio Hail',country:'Saudi Arabia',city:'Hail',genre:'Arabic',lat:27.52,lon:41.69,url:null},
+  {name:'Radio Abha',country:'Saudi Arabia',city:'Abha',genre:'Arabic',lat:18.22,lon:42.51,url:null},
+  {name:'Radio Madinah',country:'Saudi Arabia',city:'Madinah',genre:'Religious',lat:24.47,lon:39.61,url:null},
+  // UAE
+  {name:'Nation Radio UAE',country:'UAE',city:'Dubai',genre:'News',lat:25.18,lon:55.25,url:null},
+  {name:'Dubai Eye 103.8',country:'UAE',city:'Dubai',genre:'Talk',lat:25.12,lon:55.19,url:null},
+  {name:'Hit FM Dubai',country:'UAE',city:'Dubai',genre:'Pop',lat:25.08,lon:55.15,url:null},
+  {name:'Hum FM Dubai',country:'UAE',city:'Dubai',genre:'Music',lat:25.14,lon:55.23,url:null},
+  {name:'Radio 1 UAE',country:'UAE',city:'Abu Dhabi',genre:'Pop',lat:24.47,lon:54.37,url:null},
+  {name:'Al Emarat Radio',country:'UAE',city:'Abu Dhabi',genre:'Arabic',lat:24.43,lon:54.36,url:null},
+  // Kuwait
+  {name:'Super Station Kuwait',country:'Kuwait',city:'Kuwait City',genre:'Pop',lat:29.38,lon:47.99,url:null},
+  {name:'Radio 1 Kuwait',country:'Kuwait',city:'Kuwait City',genre:'Music',lat:29.36,lon:47.97,url:null},
+  {name:'Sawt Al Arab Kuwait',country:'Kuwait',city:'Kuwait City',genre:'Arabic',lat:29.34,lon:47.95,url:null},
+  // Lebanon  
+  {name:'Radio Liban',country:'Lebanon',city:'Beirut',genre:'Talk',lat:33.90,lon:35.52,url:null},
+  {name:'Mix FM Lebanon',country:'Lebanon',city:'Beirut',genre:'Pop',lat:33.88,lon:35.49,url:null},
+  {name:'Virgin Radio Lebanon',country:'Lebanon',city:'Beirut',genre:'Pop',lat:33.86,lon:35.48,url:null},
+  {name:'NRJ Lebanon',country:'Lebanon',city:'Beirut',genre:'Pop',lat:33.87,lon:35.53,url:null},
+  {name:'Radio Orient Lebanon',country:'Lebanon',city:'Beirut',genre:'Arabic',lat:33.91,lon:35.51,url:null},
+  // Jordan
+  {name:'Hala FM Jordan',country:'Jordan',city:'Amman',genre:'Pop',lat:31.97,lon:35.95,url:null},
+  {name:'Star FM Jordan',country:'Jordan',city:'Amman',genre:'Pop',lat:31.94,lon:35.91,url:null},
+  {name:'Amen FM Jordan',country:'Jordan',city:'Amman',genre:'Talk',lat:31.93,lon:35.89,url:null},
+  {name:'Radio Farah Jordan',country:'Jordan',city:'Amman',genre:'Arabic',lat:31.96,lon:35.94,url:null},
+  // Morocco
+  {name:'Chada FM Morocco',country:'Morocco',city:'Casablanca',genre:'Music',lat:33.60,lon:-7.61,url:null},
+  {name:'Radio 2M Morocco',country:'Morocco',city:'Rabat',genre:'Talk',lat:34.03,lon:-6.84,url:null},
+  {name:'Radio Aswat',country:'Morocco',city:'Casablanca',genre:'Talk',lat:33.58,lon:-7.60,url:null},
+  {name:'Med Radio Morocco',country:'Morocco',city:'Casablanca',genre:'Music',lat:33.57,lon:-7.59,url:null},
+  {name:'Atlantic Radio Maroc',country:'Morocco',city:'Agadir',genre:'Music',lat:30.42,lon:-9.60,url:null},
+  // Tunisia
+  {name:'Jawhara FM',country:'Tunisia',city:'Tunis',genre:'Music',lat:36.83,lon:10.17,url:null},
+  {name:'Shems FM',country:'Tunisia',city:'Tunis',genre:'Pop',lat:36.81,lon:10.15,url:null},
+  {name:'Express FM Tunisia',country:'Tunisia',city:'Tunis',genre:'Talk',lat:36.79,lon:10.13,url:null},
+  {name:'IFM Tunisia',country:'Tunisia',city:'Tunis',genre:'Music',lat:36.84,lon:10.19,url:null},
+  // Algeria
+  {name:'Radio El Bahdja',country:'Algeria',city:'Algiers',genre:'Music',lat:36.75,lon:3.07,url:null},
+  {name:'Dzair Radio',country:'Algeria',city:'Algiers',genre:'Arabic',lat:36.73,lon:3.05,url:null},
+  {name:'Radio Sila Algeria',country:'Algeria',city:'Algiers',genre:'Music',lat:36.72,lon:3.04,url:null},
+  // Iraq
+  {name:'Radio Sawa Iraq',country:'Iraq',city:'Baghdad',genre:'Pop',lat:33.35,lon:44.42,url:null},
+  {name:'Nawa Radio Iraq',country:'Iraq',city:'Baghdad',genre:'Music',lat:33.33,lon:44.39,url:null},
+  {name:'Radio Dijlah',country:'Iraq',city:'Baghdad',genre:'Talk',lat:33.36,lon:44.41,url:null},
+  {name:'Radio Kirkuk',country:'Iraq',city:'Kirkuk',genre:'Arabic',lat:35.47,lon:44.39,url:null},
+  // Libya
+  {name:'Radio Libya',country:'Libya',city:'Tripoli',genre:'Arabic',lat:32.90,lon:13.18,url:null},
+  {name:'Al Ahrar Radio Libya',country:'Libya',city:'Tripoli',genre:'Talk',lat:32.88,lon:13.16,url:null},
+  // Yemen
+  {name:'Radio Yemen',country:'Yemen',city:'Sanaa',genre:'Arabic',lat:15.36,lon:44.19,url:null},
+  // Palestine
+  {name:'Al-Quds Radio',country:'Palestine',city:'Jerusalem',genre:'Arabic',lat:31.78,lon:35.22,url:null},
+  {name:'Radio Ajial Palestine',country:'Palestine',city:'Ramallah',genre:'Music',lat:31.91,lon:35.22,url:null},
+  {name:'Bethlehem 2000',country:'Palestine',city:'Bethlehem',genre:'Talk',lat:31.70,lon:35.20,url:null},
+  // Oman
+  {name:'Hi FM Oman',country:'Oman',city:'Muscat',genre:'Pop',lat:23.60,lon:58.58,url:null},
+  {name:'Merge FM Oman',country:'Oman',city:'Muscat',genre:'Pop',lat:23.62,lon:58.60,url:null},
+  // Qatar
+  {name:'Sout Al Khaleej',country:'Qatar',city:'Doha',genre:'Arabic',lat:25.27,lon:51.51,url:null},
+  {name:'Qatar Today Radio',country:'Qatar',city:'Doha',genre:'Talk',lat:25.29,lon:51.54,url:null},
+
+  // ── MORE EUROPE ──
+  // UK
+  {name:'TalkSport UK',country:'UK',city:'London',genre:'Sports',lat:51.53,lon:-0.09,url:null},
+  {name:'LBC 97.3',country:'UK',city:'London',genre:'Talk',lat:51.51,lon:-0.13,url:null},
+  {name:'Heart FM UK',country:'UK',city:'London',genre:'Music',lat:51.50,lon:-0.15,url:null},
+  {name:'Kiss FM UK',country:'UK',city:'London',genre:'Electronic',lat:51.49,lon:-0.10,url:null},
+  {name:'Absolute Radio',country:'UK',city:'London',genre:'Rock',lat:51.52,lon:-0.07,url:null},
+  {name:'Radio 1Xtra BBC',country:'UK',city:'London',genre:'Music',lat:51.53,lon:-0.06,url:null},
+  {name:'Classic FM UK',country:'UK',city:'London',genre:'Classical',lat:51.48,lon:-0.12,url:null},
+  {name:'Radio Scotland',country:'UK',city:'Glasgow',genre:'Talk',lat:55.86,lon:-4.26,url:null},
+  {name:'Radio Wales BBC',country:'UK',city:'Cardiff',genre:'Talk',lat:51.48,lon:-3.18,url:null},
+  // France
+  {name:'France Culture',country:'France',city:'Paris',genre:'Talk',lat:48.88,lon:2.34,url:null},
+  {name:'Europe 2',country:'France',city:'Paris',genre:'Pop',lat:48.86,lon:2.36,url:null},
+  {name:'Radio FG France',country:'France',city:'Paris',genre:'Electronic',lat:48.84,lon:2.38,url:null},
+  {name:'Radio Nova France',country:'France',city:'Paris',genre:'Jazz',lat:48.83,lon:2.28,url:null},
+  {name:'Mouv Radio France',country:'France',city:'Paris',genre:'Music',lat:48.87,lon:2.29,url:null},
+  {name:'BFM Radio',country:'France',city:'Paris',genre:'News',lat:48.90,lon:2.36,url:null},
+  {name:'Radio Lille',country:'France',city:'Lille',genre:'Talk',lat:50.63,lon:3.07,url:null},
+  {name:'Radio Nantes',country:'France',city:'Nantes',genre:'Music',lat:47.22,lon:-1.55,url:null},
+  // Germany
+  {name:'Fritz Berlin',country:'Germany',city:'Berlin',genre:'Music',lat:52.51,lon:13.39,url:null},
+  {name:'SWR3',country:'Germany',city:'Stuttgart',genre:'Pop',lat:48.78,lon:9.18,url:null},
+  {name:'WDR2',country:'Germany',city:'Cologne',genre:'Pop',lat:50.93,lon:6.95,url:null},
+  {name:'MDR Jump',country:'Germany',city:'Leipzig',genre:'Pop',lat:51.34,lon:12.37,url:null},
+  {name:'hr3 Frankfurt',country:'Germany',city:'Frankfurt',genre:'Pop',lat:50.11,lon:8.68,url:null},
+  {name:'Radio Hamburg',country:'Germany',city:'Hamburg',genre:'Pop',lat:53.56,lon:10.01,url:null},
+  {name:'Bayern 1',country:'Germany',city:'Munich',genre:'Music',lat:48.13,lon:11.57,url:null},
+  // Italy
+  {name:'Radio Deejay',country:'Italy',city:'Milan',genre:'Pop',lat:45.48,lon:9.21,url:null},
+  {name:'Radio Kiss Kiss',country:'Italy',city:'Naples',genre:'Pop',lat:40.85,lon:14.27,url:null},
+  {name:'R101 Italy',country:'Italy',city:'Rome',genre:'Music',lat:41.91,lon:12.52,url:null},
+  {name:'Radio Monte Carlo Italy',country:'Italy',city:'Milan',genre:'Music',lat:45.45,lon:9.18,url:null},
+  {name:'Radio DeeJay Rome',country:'Italy',city:'Rome',genre:'Pop',lat:41.89,lon:12.49,url:null},
+  // Spain
+  {name:'Cadena SER',country:'Spain',city:'Madrid',genre:'Talk',lat:40.41,lon:-3.69,url:null},
+  {name:'RNE 3 Spain',country:'Spain',city:'Madrid',genre:'Music',lat:40.44,lon:-3.72,url:null},
+  {name:'Onda Cero Spain',country:'Spain',city:'Madrid',genre:'Talk',lat:40.42,lon:-3.71,url:null},
+  {name:'Ser Barcelona',country:'Spain',city:'Barcelona',genre:'Talk',lat:41.37,lon:2.15,url:null},
+  {name:'Radio Zaragoza',country:'Spain',city:'Zaragoza',genre:'Talk',lat:41.65,lon:-0.89,url:null},
+  // Netherlands
+  {name:'3FM Netherlands',country:'Netherlands',city:'Amsterdam',genre:'Pop',lat:52.38,lon:4.91,url:null},
+  {name:'Radio 1 NL',country:'Netherlands',city:'Amsterdam',genre:'News',lat:52.35,lon:4.87,url:null},
+  {name:'Radio 538',country:'Netherlands',city:'Amsterdam',genre:'Pop',lat:52.37,lon:4.89,url:null},
+  // Belgium
+  {name:'Studio Brussel',country:'Belgium',city:'Brussels',genre:'Music',lat:50.84,lon:4.34,url:null},
+  {name:'MNM Belgium',country:'Belgium',city:'Brussels',genre:'Pop',lat:50.86,lon:4.36,url:null},
+  // Poland
+  {name:'Radio ZET',country:'Poland',city:'Warsaw',genre:'Pop',lat:52.24,lon:21.02,url:null},
+  {name:'RMF FM Poland',country:'Poland',city:'Krakow',genre:'Pop',lat:50.06,lon:19.94,url:null},
+  // Russia
+  {name:'Radio Mayak',country:'Russia',city:'Moscow',genre:'Music',lat:55.76,lon:37.61,url:null},
+  {name:'Autoradio Russia',country:'Russia',city:'Moscow',genre:'Music',lat:55.74,lon:37.59,url:null},
+  {name:'Russian Radio',country:'Russia',city:'Moscow',genre:'Pop',lat:55.78,lon:37.63,url:null},
+  // Greece
+  {name:'ANT1 Radio Greece',country:'Greece',city:'Athens',genre:'Pop',lat:37.99,lon:23.74,url:null},
+  {name:'Skai 100.3 Greece',country:'Greece',city:'Athens',genre:'News',lat:37.97,lon:23.72,url:null},
+  {name:'Star FM Greece',country:'Greece',city:'Athens',genre:'Pop',lat:37.98,lon:23.71,url:null},
+  // Romania
+  {name:'ProFM Romania',country:'Romania',city:'Bucharest',genre:'Pop',lat:44.44,lon:26.11,url:null},
+  {name:'Kiss FM Romania',country:'Romania',city:'Bucharest',genre:'Pop',lat:44.42,lon:26.09,url:null},
+  // Turkey
+  {name:'Kral FM Turkey',country:'Turkey',city:'Istanbul',genre:'Music',lat:41.02,lon:28.96,url:null},
+  {name:'Radyo D Turkey',country:'Turkey',city:'Istanbul',genre:'Pop',lat:41.00,lon:28.94,url:null},
+  {name:'Super FM Turkey',country:'Turkey',city:'Istanbul',genre:'Pop',lat:40.99,lon:28.93,url:null},
+  // Portugal
+  {name:'Radio Comercial',country:'Portugal',city:'Lisbon',genre:'Music',lat:38.74,lon:-9.15,url:null},
+  {name:'TSF Radio Portugal',country:'Portugal',city:'Lisbon',genre:'News',lat:38.71,lon:-9.12,url:null},
+  // Czech Republic
+  {name:'Radio Evropa 2',country:'Czech Republic',city:'Prague',genre:'Pop',lat:50.08,lon:14.43,url:null},
+  {name:'Radio Frekvence 1',country:'Czech Republic',city:'Prague',genre:'Pop',lat:50.07,lon:14.42,url:null},
+  // Hungary
+  {name:'Radio 1 Hungary',country:'Hungary',city:'Budapest',genre:'Pop',lat:47.51,lon:19.05,url:null},
+  // Ukraine
+  {name:'Radio TDCK Ukraine',country:'Ukraine',city:'Kyiv',genre:'Pop',lat:50.46,lon:30.53,url:null},
+  {name:'Hit FM Ukraine',country:'Ukraine',city:'Kyiv',genre:'Pop',lat:50.44,lon:30.51,url:null},
+  // Croatia
+  {name:'Radio Antena Zagreb',country:'Croatia',city:'Zagreb',genre:'Pop',lat:45.81,lon:15.98,url:null},
+  // Serbia
+  {name:'Radio S1 Serbia',country:'Serbia',city:'Belgrade',genre:'Pop',lat:44.82,lon:20.46,url:null},
+
+  // ── MORE AMERICAS ──
+  // USA — by city
+  {name:'KROQ Los Angeles',country:'USA',city:'Los Angeles',genre:'Rock',lat:34.05,lon:-118.24,url:null},
+  {name:'Q104.3 New York',country:'USA',city:'New York',genre:'Rock',lat:40.72,lon:-74.03,url:null},
+  {name:'Power 99 Philadelphia',country:'USA',city:'Philadelphia',genre:'Pop',lat:39.95,lon:-75.17,url:null},
+  {name:'Mix 94.7 Austin',country:'USA',city:'Austin',genre:'Pop',lat:30.27,lon:-97.74,url:null},
+  {name:'KDKA Pittsburgh',country:'USA',city:'Pittsburgh',genre:'Talk',lat:40.44,lon:-80.00,url:null},
+  {name:'WSB Radio Atlanta',country:'USA',city:'Atlanta',genre:'Talk',lat:33.75,lon:-84.39,url:null},
+  {name:'WDVD Detroit',country:'USA',city:'Detroit',genre:'Pop',lat:42.33,lon:-83.05,url:null},
+  {name:'KBCO Boulder',country:'USA',city:'Denver',genre:'Music',lat:39.74,lon:-104.98,url:null},
+  {name:'KNBR Sports San Francisco',country:'USA',city:'San Francisco',genre:'Sports',lat:37.79,lon:-122.40,url:null},
+  {name:'90.3 KEXP Seattle',country:'USA',city:'Seattle',genre:'Music',lat:47.61,lon:-122.33,url:null},
+  {name:'WWOZ New Orleans',country:'USA',city:'New Orleans',genre:'Jazz',lat:29.95,lon:-90.07,url:null},
+  {name:'WFAN Sports New York',country:'USA',city:'New York',genre:'Sports',lat:40.75,lon:-73.99,url:null},
+  // Canada
+  {name:'CHUM Toronto',country:'Canada',city:'Toronto',genre:'Pop',lat:43.64,lon:-79.39,url:null},
+  {name:'CKWX Vancouver',country:'Canada',city:'Vancouver',genre:'News',lat:49.26,lon:-123.13,url:null},
+  {name:'98.5 FM Montreal',country:'Canada',city:'Montreal',genre:'Talk',lat:45.51,lon:-73.56,url:null},
+  {name:'Virgin Radio Calgary',country:'Canada',city:'Calgary',genre:'Pop',lat:51.05,lon:-114.07,url:null},
+  {name:'CKUA Edmonton',country:'Canada',city:'Edmonton',genre:'Music',lat:53.55,lon:-113.49,url:null},
+  // Brazil
+  {name:'Radio Globo Brazil',country:'Brazil',city:'Rio de Janeiro',genre:'Talk',lat:-22.91,lon:-43.17,url:null},
+  {name:'Jovem Pan Brazil',country:'Brazil',city:'Sao Paulo',genre:'Talk',lat:-23.56,lon:-46.65,url:null},
+  {name:'Band FM Brazil',country:'Brazil',city:'Sao Paulo',genre:'Pop',lat:-23.53,lon:-46.62,url:null},
+  {name:'Radio Transamérica',country:'Brazil',city:'Sao Paulo',genre:'Music',lat:-23.57,lon:-46.66,url:null},
+  {name:'Radio Cultura Brazil',country:'Brazil',city:'Sao Paulo',genre:'Classical',lat:-23.52,lon:-46.61,url:null},
+  // Mexico
+  {name:'Exa FM Mexico',country:'Mexico',city:'Mexico City',genre:'Pop',lat:19.45,lon:-99.13,url:null},
+  {name:'La Ke Buena Mexico',country:'Mexico',city:'Mexico City',genre:'Music',lat:19.44,lon:-99.16,url:null},
+  {name:'Beat 100.3 Mexico',country:'Mexico',city:'Mexico City',genre:'Electronic',lat:19.42,lon:-99.15,url:null},
+  {name:'Radio Guadalajara',country:'Mexico',city:'Guadalajara',genre:'Music',lat:20.67,lon:-103.36,url:null},
+  // Argentina
+  {name:'Mitre AM Argentina',country:'Argentina',city:'Buenos Aires',genre:'Talk',lat:-34.62,lon:-58.42,url:null},
+  {name:'Rock Pop Argentina',country:'Argentina',city:'Buenos Aires',genre:'Rock',lat:-34.59,lon:-58.37,url:null},
+  {name:'Radio Metro Argentina',country:'Argentina',city:'Buenos Aires',genre:'Music',lat:-34.63,lon:-58.41,url:null},
+  // Colombia
+  {name:'La W Radio Colombia',country:'Colombia',city:'Bogota',genre:'Talk',lat:4.72,lon:-74.09,url:null},
+  {name:'Los 40 Colombia',country:'Colombia',city:'Bogota',genre:'Pop',lat:4.69,lon:-74.06,url:null},
+  // Chile
+  {name:'Rock Pop Chile',country:'Chile',city:'Santiago',genre:'Rock',lat:-33.45,lon:-70.64,url:null},
+  {name:'Radio Corazon Chile',country:'Chile',city:'Santiago',genre:'Music',lat:-33.47,lon:-70.66,url:null},
+  // Peru
+  {name:'RPP Noticias Peru',country:'Peru',city:'Lima',genre:'News',lat:-12.04,lon:-77.03,url:null},
+  {name:'Moda FM Peru',country:'Peru',city:'Lima',genre:'Pop',lat:-12.06,lon:-77.05,url:null},
+  // Venezuela
+  {name:'Radio Venezuela',country:'Venezuela',city:'Caracas',genre:'Talk',lat:10.49,lon:-66.87,url:null},
+  {name:'97.7 FM Caracas',country:'Venezuela',city:'Caracas',genre:'Pop',lat:10.47,lon:-66.89,url:null},
+
+  // ── MORE ASIA ──
+  {name:'Radio Mirchi Mumbai',country:'India',city:'Mumbai',genre:'Pop',lat:19.09,lon:72.89,url:null},
+  {name:'Big FM India',country:'India',city:'Delhi',genre:'Pop',lat:28.63,lon:77.22,url:null},
+  {name:'J-Wave Tokyo',country:'Japan',city:'Tokyo',genre:'Music',lat:35.66,lon:139.72,url:null},
+  {name:'Bang Bang Radio Seoul',country:'South Korea',city:'Seoul',genre:'Pop',lat:37.56,lon:126.97,url:null},
+  {name:'Radio Thailand',country:'Thailand',city:'Bangkok',genre:'Music',lat:13.76,lon:100.50,url:null},
+  {name:'Hitz FM Malaysia',country:'Malaysia',city:'Kuala Lumpur',genre:'Pop',lat:3.14,lon:101.69,url:null},
+  {name:'Capital 958 Singapore',country:'Singapore',city:'Singapore',genre:'Music',lat:1.35,lon:103.82,url:null},
+  {name:'DWRR Philippines',country:'Philippines',city:'Manila',genre:'Talk',lat:14.60,lon:120.98,url:null},
+
+  // ── MORE AFRICA ──
+  {name:'Smooth FM Nigeria',country:'Nigeria',city:'Lagos',genre:'Music',lat:6.55,lon:3.41,url:null},
+  {name:'City FM Nigeria',country:'Nigeria',city:'Lagos',genre:'Pop',lat:6.53,lon:3.39,url:null},
+  {name:'Jacaranda FM SA',country:'South Africa',city:'Johannesburg',genre:'Pop',lat:-26.18,lon:28.02,url:null},
+  {name:'947 Johannesburg',country:'South Africa',city:'Johannesburg',genre:'Pop',lat:-26.22,lon:28.05,url:null},
+  {name:'Capital FM Kenya',country:'Kenya',city:'Nairobi',genre:'Pop',lat:-1.28,lon:36.81,url:null},
+  {name:'Citi FM Ghana',country:'Ghana',city:'Accra',genre:'News',lat:5.57,lon:-0.21,url:null},
+  {name:'Radio Fana Ethiopia',country:'Ethiopia',city:'Addis Ababa',genre:'Music',lat:9.03,lon:38.74,url:null}
 ];
 
 // ── STATE ──
@@ -1037,6 +1248,9 @@ function initMap(){
   L.control.zoom({position:'bottomright'}).addTo(map);
   layerGroup=L.layerGroup().addTo(map);
   placeMarkers();
+  // Update area count when map moves or zooms
+  map.on('moveend zoomend',updateAreaCount);
+  setTimeout(updateAreaCount,1000);
 }
 
 function gColor(g){return GC[g]||GC.default}
@@ -1311,14 +1525,23 @@ function randomStation(){
 }
 
 // ── WHATSAPP SHARE ──
-function shareWhatsApp(){
+function shareStation(){
   const s=activeIdx!==null?allStations[activeIdx]:null;
-  const msg=s
-    ?`🎵 استمع الآن لـ ${s.name} من ${s.country} على خريطة الراديو المجانية!\n🌍 theradiomap.com`
-    :`🌍 استمع لراديو أي دولة في العالم مجاناً!\n📻 theradiomap.com`;
-  const url='https://wa.me/?text='+encodeURIComponent(msg);
-  window.open(url,'_blank');
+  const title=s?s.name+' — The Radio Map':'The Radio Map';
+  const text=s
+    ?'Listening to '+s.name+' from '+s.country+' — free on theradiomap.com'
+    :'Listen to 30,000+ radio stations free on theradiomap.com';
+  const url='https://theradiomap.com';
+  if(navigator.share){
+    navigator.share({title,text,url}).catch(()=>{});
+  } else {
+    navigator.clipboard&&navigator.clipboard.writeText(url+' — '+text)
+      .then(()=>showToast('Link copied to clipboard!'))
+      .catch(()=>showToast('theradiomap.com'));
+  }
 }
+// Keep shareWhatsApp for backward compat
+function shareWhatsApp(){shareStation();}
 
 // ── FAVOURITES ──
 function toggleFav(i){
@@ -1430,6 +1653,15 @@ function filterByArea(){
   document.getElementById('crumb-txt').textContent='Stations in this area · '+area.length;
   showToast('📍 '+area.length+' stations in this area');
   if(window.innerWidth<=740)openSidebar();
+}
+
+// ── AUTO AREA COUNT — updates as map moves ──
+function updateAreaCount(){
+  if(!map)return;
+  const bounds=map.getBounds();
+  const count=allStations.filter(s=>bounds.contains([s.lat,s.lon])).length;
+  const badge=document.getElementById('area-count');
+  if(badge){badge.textContent=count>0?count+' stations':'';}
 }
 
 // ── RESET ──

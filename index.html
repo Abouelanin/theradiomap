@@ -420,6 +420,69 @@ body.dark #mob-btn{background:rgba(22,32,53,0.96)}
   #mob-close{display:block}
   #overlay.show{display:block}
 }
+
+/* ── SHARE MODAL ── */
+#share-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.55);z-index:9000;
+  display:none;align-items:flex-end;justify-content:center;padding:0;
+  animation:fadeIn 0.2s ease}
+#share-overlay.show{display:flex}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+#share-modal{background:var(--bg1);border-radius:20px 20px 0 0;padding:20px 20px 28px;
+  width:100%;max-width:480px;box-shadow:0 -8px 40px rgba(0,0,0,0.2);
+  animation:slideUp 0.25s ease;position:relative}
+@keyframes slideUp{from{transform:translateY(40px);opacity:0}to{transform:translateY(0);opacity:1}}
+.share-handle{width:36px;height:4px;background:var(--border2);border-radius:2px;
+  margin:0 auto 16px;display:block}
+.share-station-card{background:var(--bg2);border-radius:12px;padding:12px 14px;
+  margin-bottom:16px;display:flex;align-items:center;gap:11px;
+  border:1.5px solid var(--border)}
+.share-station-icon{width:42px;height:42px;border-radius:10px;
+  background:linear-gradient(135deg,var(--amalfi),var(--amalfi2));
+  display:flex;align-items:center;justify-content:center;
+  font-size:20px;flex-shrink:0;color:#fff}
+.share-station-name{font-size:13px;font-weight:800;color:var(--text)}
+.share-station-loc{font-size:11px;color:var(--text3);margin-top:2px}
+.share-section-lbl{font-size:9px;font-weight:800;color:var(--text3);
+  text-transform:uppercase;letter-spacing:0.1em;margin-bottom:7px}
+.share-msg-box{background:var(--bg2);border:1.5px solid var(--border2);
+  border-radius:10px;padding:11px 13px;font-size:13px;font-family:var(--font);
+  color:var(--text);width:100%;resize:none;outline:none;line-height:1.6;
+  direction:rtl;text-align:right;margin-bottom:14px}
+.share-msg-box:focus{border-color:var(--amalfi);box-shadow:0 0 0 3px rgba(46,90,167,0.1)}
+.share-link-row{display:flex;gap:7px;margin-bottom:16px}
+.share-link-input{flex:1;background:var(--bg2);border:1.5px solid var(--border2);
+  border-radius:10px;padding:8px 11px;font-size:11px;font-family:var(--font-mono);
+  color:var(--text2);outline:none;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+  font-family:monospace}
+.share-copy-btn{flex-shrink:0;padding:8px 14px;background:var(--amalfi);
+  color:#fff;border:none;border-radius:10px;font-size:11px;font-weight:800;
+  font-family:var(--font);cursor:pointer;transition:opacity 0.15s;white-space:nowrap}
+.share-copy-btn:hover{opacity:0.85}
+.share-copy-btn.copied{background:var(--green)}
+.share-platforms{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px}
+.share-plt{display:flex;flex-direction:column;align-items:center;gap:5px;
+  padding:11px 8px;border-radius:12px;border:1.5px solid var(--border2);
+  background:var(--bg2);cursor:pointer;transition:all 0.15s;font-family:var(--font)}
+.share-plt:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.share-plt-icon{font-size:22px;line-height:1}
+.share-plt-lbl{font-size:10px;font-weight:700;color:var(--text2)}
+.share-plt.whatsapp:hover{background:#25D366;border-color:#25D366}
+.share-plt.whatsapp:hover .share-plt-lbl{color:#fff}
+.share-plt.facebook:hover{background:#1877F2;border-color:#1877F2}
+.share-plt.facebook:hover .share-plt-lbl{color:#fff}
+.share-plt.twitter:hover{background:#000;border-color:#000}
+.share-plt.twitter:hover .share-plt-lbl{color:#fff}
+.share-plt.telegram:hover{background:#0088cc;border-color:#0088cc}
+.share-plt.telegram:hover .share-plt-lbl{color:#fff}
+.share-close-btn{position:absolute;top:14px;right:16px;background:var(--bg3);
+  border:none;border-radius:8px;width:28px;height:28px;
+  display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--text3);font-size:15px}
+.share-close-btn:hover{color:var(--text);background:var(--border2)}
+.share-lang-toggle{display:flex;gap:6px;margin-bottom:10px}
+.lang-btn{flex:1;padding:5px;border-radius:8px;border:1.5px solid var(--border2);
+  background:transparent;font-size:11px;font-weight:700;font-family:var(--font);
+  color:var(--text2);cursor:pointer;transition:all 0.15s}
+.lang-btn.on{background:var(--amalfi);border-color:var(--amalfi);color:#fff}
 </style>
 
 <!-- JSON-LD STRUCTURED DATA — helps Google understand the site -->
@@ -728,6 +791,7 @@ body.dark #mob-btn{background:rgba(22,32,53,0.96)}
       </button>
       <button class="ibtn" id="vol-btn" onclick="toggleMute()"><i class="ti ti-volume" id="vol-ico"></i></button>
       <button class="ibtn" id="np-fav-btn" onclick="toggleFavCurrent()" title="Save station"><i class="ti ti-heart" id="np-fav-ico" style="font-size:16px"></i></button>
+      <button class="ibtn" onclick="copyStationLink()" title="Copy shareable link"><i class="ti ti-link"></i></button>
     </div>
     <div id="waveform">
       <div class="wb" style="--d:.55s;--dl:0s"></div><div class="wb" style="--d:.70s;--dl:.07s"></div>
@@ -766,6 +830,56 @@ body.dark #mob-btn{background:rgba(22,32,53,0.96)}
   <div id="map-hint">Click a dot to listen &nbsp;·&nbsp; Scroll to zoom</div>
 </div>
 </main>
+
+
+<!-- SHARE MODAL -->
+<div id="share-overlay" onclick="closeShareModal(event)">
+  <div id="share-modal">
+    <span class="share-handle"></span>
+    <button class="share-close-btn" onclick="closeShareModal()"><i class="ti ti-x"></i></button>
+
+    <div class="share-station-card" id="share-station-preview">
+      <div class="share-station-icon" id="share-station-icon">📻</div>
+      <div>
+        <div class="share-station-name" id="share-station-name">Station Name</div>
+        <div class="share-station-loc" id="share-station-loc">Country · Genre</div>
+      </div>
+    </div>
+
+    <div class="share-section-lbl">Message</div>
+    <div class="share-lang-toggle">
+      <button class="lang-btn on" onclick="setShareLang('ar',this)">🌙 Arabic</button>
+      <button class="lang-btn" onclick="setShareLang('en',this)">🇬🇧 English</button>
+    </div>
+    <textarea class="share-msg-box" id="share-msg" rows="4"></textarea>
+
+    <div class="share-section-lbl">Shareable Link</div>
+    <div class="share-link-row">
+      <input class="share-link-input" id="share-link-input" readonly>
+      <button class="share-copy-btn" id="share-copy-btn" onclick="copyShareLink()">Copy</button>
+    </div>
+
+    <div class="share-section-lbl">Share to</div>
+    <div class="share-platforms">
+      <button class="share-plt whatsapp" onclick="shareTo('whatsapp')">
+        <span class="share-plt-icon">💬</span>
+        <span class="share-plt-lbl">WhatsApp</span>
+      </button>
+      <button class="share-plt facebook" onclick="shareTo('facebook')">
+        <span class="share-plt-icon">📘</span>
+        <span class="share-plt-lbl">Facebook</span>
+      </button>
+      <button class="share-plt twitter" onclick="shareTo('twitter')">
+        <span class="share-plt-icon">🐦</span>
+        <span class="share-plt-lbl">X / Twitter</span>
+      </button>
+      <button class="share-plt telegram" onclick="shareTo('telegram')">
+        <span class="share-plt-icon">✈️</span>
+        <span class="share-plt-lbl">Telegram</span>
+      </button>
+    </div>
+  </div>
+</div>
 
 <div id="toast" role="status" aria-live="polite"></div>
 
@@ -1539,22 +1653,79 @@ function randomStation(){
 
 // ── WHATSAPP SHARE ──
 function shareStation(){
-  const s=activeIdx!==null?allStations[activeIdx]:null;
-  const title=s?s.name+' — The Radio Map':'The Radio Map';
-  const text=s
-    ?'Listening to '+s.name+' from '+s.country+' — free on theradiomap.com'
-    :'Listen to 30,000+ radio stations free on theradiomap.com';
-  const url='https://theradiomap.com';
-  if(navigator.share){
-    navigator.share({title,text,url}).catch(()=>{});
-  } else {
-    navigator.clipboard&&navigator.clipboard.writeText(url+' — '+text)
-      .then(()=>showToast('Link copied to clipboard!'))
-      .catch(()=>showToast('theradiomap.com'));
+  if(activeIdx!==null) copyStationLink();
+  else {
+    const url='https://theradiomap.com';
+    if(navigator.share){navigator.share({title:'The Radio Map',text:'Listen to 30,000+ radio stations free',url}).catch(()=>{});}
+    else{navigator.clipboard&&navigator.clipboard.writeText(url).then(()=>showToast('Link copied!')).catch(()=>showToast('theradiomap.com'));}
   }
 }
-// Keep shareWhatsApp for backward compat
 function shareWhatsApp(){shareStation();}
+
+// ── DEEP LINK — copy shareable link for current station ──
+function getStationLink(s){
+  if(!s)return 'https://theradiomap.com';
+  const encoded=encodeURIComponent(s.name);
+  return 'https://theradiomap.com/?play='+encoded;
+}
+
+function copyStationLink(){
+  openShareModal(activeIdx);
+}
+
+function fallbackCopy(text){
+  const el=document.createElement('textarea');
+  el.value=text;el.style.position='fixed';el.style.opacity='0';
+  document.body.appendChild(el);el.select();
+  try{document.execCommand('copy');showToast('Link copied!');}
+  catch(e){showToast(text);}
+  document.body.removeChild(el);
+}
+
+function copyStationLinkById(i){
+  const s=allStations[i];
+  if(!s)return;
+  const link=getStationLink(s);
+  if(navigator.clipboard){
+    navigator.clipboard.writeText(link).then(()=>showToast('Link copied for '+s.name)).catch(()=>fallbackCopy(link));
+  } else fallbackCopy(link);
+}
+
+// ── AUTO-PLAY FROM URL PARAM ──
+function checkDeepLink(){
+  const params=new URLSearchParams(window.location.search);
+  const playParam=params.get('play')||params.get('station')||params.get('s');
+  if(!playParam)return;
+  const searchName=playParam.toLowerCase().trim();
+  // Try to find station in loaded list
+  const tryFind=()=>{
+    const found=allStations.findIndex(s=>
+      s.name.toLowerCase()===searchName||
+      s.name.toLowerCase().includes(searchName)||
+      searchName.includes(s.name.toLowerCase().substring(0,8))
+    );
+    if(found>=0){
+      // Skip hero and auto-play
+      dismissHero();
+      setTimeout(()=>{
+        selectStation(found);
+        showToast('Auto-playing: '+allStations[found].name);
+      },800);
+      return true;
+    }
+    return false;
+  };
+  // Try immediately with CURATED, then retry after API loads
+  if(!tryFind()){
+    const retry=setInterval(()=>{
+      if(allStations.length>CURATED.length){
+        if(tryFind())clearInterval(retry);
+      }
+    },1000);
+    // Stop retrying after 15 seconds
+    setTimeout(()=>clearInterval(retry),15000);
+  }
+}
 
 // ── FAVOURITES ──
 function toggleFav(i){
@@ -1802,10 +1973,115 @@ try{
   document.getElementById('pwa-manifest').href=URL.createObjectURL(mb);
 }catch(e){}
 
+
+// ──────────────────────────────────────────
+// SHARE MODAL
+// ──────────────────────────────────────────
+let shareLang = 'ar';
+let shareStationIdx = null;
+
+const SHARE_MESSAGES = {
+  ar: (s) => {
+    const isQuran = s.genre==='Religious' || s.name.toLowerCase().includes('quran') || s.name.includes('قرآن');
+    const isArabic = s.country==='Egypt'||s.country==='Saudi Arabia'||s.country==='UAE'||s.country==='Morocco';
+    if(isQuran){
+      return `🕌 استمع لإذاعة القرآن الكريم مجاناً من أي مكان في العالم!\n\nلا تحتاج تحميل ولا تسجيل — فقط افتح الرابط وابدأ الاستماع 🌍\n\n📻 ${getStationLink(s)}\n\nوزعها على كل من يحب سماع القرآن الكريم ❤️`;
+    } else if(isArabic){
+      return `🎵 استمع الآن لـ ${s.name} ${FLAGS[s.country]||''} مباشرة مجاناً!\n\nموقع رائع يجمع أكثر من 30,000 محطة راديو من كل دول العالم على خريطة واحدة 🌍\n\n📻 ${getStationLink(s)}\n\nجرب وقولي رأيك!`;
+    } else {
+      return `🎵 استمع الآن لـ ${s.name} من ${s.country} ${FLAGS[s.country]||''} مجاناً!\n\n🌍 ${getStationLink(s)}\n\nاستمع لراديو أي دولة في العالم على موقع خريطة الراديو — مجاناً بدون تحميل`;
+    }
+  },
+  en: (s) => {
+    const isQuran = s.genre==='Religious' || s.name.toLowerCase().includes('quran');
+    if(isQuran){
+      return `🕌 Listen to Quran Radio live for free, from anywhere in the world!\n\nNo download, no sign-up — just click and listen 🌍\n\n📻 ${getStationLink(s)}\n\nShare with everyone who loves listening to the Quran ❤️`;
+    } else {
+      return `🎵 Listen to ${s.name} from ${s.country} ${FLAGS[s.country]||''} live for free!\n\nThe Radio Map — 30,000+ live radio stations from 180+ countries on one interactive map 🌍\n\n📻 ${getStationLink(s)}\n\nNo download needed. Works on any device.`;
+    }
+  }
+};
+
+function openShareModal(idx){
+  shareStationIdx = (idx!==undefined) ? idx : activeIdx;
+  if(shareStationIdx===null){ showToast('Select a station first'); return; }
+  const s = allStations[shareStationIdx];
+  if(!s) return;
+
+  // Fill station preview
+  const isQuran = s.genre==='Religious'||s.name.toLowerCase().includes('quran')||s.name.includes('قرآن');
+  document.getElementById('share-station-icon').textContent = isQuran?'🕌': (s.country==='Egypt'?'🇪🇬': (FLAGS[s.country]||'📻'));
+  document.getElementById('share-station-name').textContent = s.name;
+  const locStr = (s.city&&s.city!==s.country) ? s.city+', '+s.country : s.country;
+  document.getElementById('share-station-loc').textContent = (FLAGS[s.country]||'') + ' ' + locStr + ' · ' + s.genre;
+
+  // Fill link
+  const link = getStationLink(s);
+  document.getElementById('share-link-input').value = link;
+
+  // Fill message — default Arabic
+  shareLang = 'ar';
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('on'));
+  document.querySelector('.lang-btn:first-child').classList.add('on');
+  document.getElementById('share-msg').value = SHARE_MESSAGES.ar(s);
+
+  // Show modal
+  const overlay = document.getElementById('share-overlay');
+  overlay.classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeShareModal(e){
+  if(e&&e.target!==document.getElementById('share-overlay')&&!e.target.closest('.share-close-btn')) return;
+  document.getElementById('share-overlay').classList.remove('show');
+  document.body.style.overflow = '';
+  // Reset copy button
+  const btn = document.getElementById('share-copy-btn');
+  btn.textContent = 'Copy'; btn.classList.remove('copied');
+}
+
+function setShareLang(lang, btn){
+  shareLang = lang;
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  if(shareStationIdx===null) return;
+  const s = allStations[shareStationIdx];
+  document.getElementById('share-msg').value = SHARE_MESSAGES[lang](s);
+}
+
+function copyShareLink(){
+  const link = document.getElementById('share-link-input').value;
+  const btn = document.getElementById('share-copy-btn');
+  if(navigator.clipboard){
+    navigator.clipboard.writeText(link).then(()=>{
+      btn.textContent = '✓ Copied!'; btn.classList.add('copied');
+      setTimeout(()=>{btn.textContent='Copy';btn.classList.remove('copied');},2500);
+    });
+  } else { fallbackCopy(link); }
+}
+
+function shareTo(platform){
+  if(shareStationIdx===null) return;
+  const s = allStations[shareStationIdx];
+  const link = getStationLink(s);
+  const msg = document.getElementById('share-msg').value || SHARE_MESSAGES.ar(s);
+  const encodedMsg = encodeURIComponent(msg);
+  const encodedLink = encodeURIComponent(link);
+  let url = '';
+  if(platform==='whatsapp') url = 'https://wa.me/?text='+encodedMsg;
+  else if(platform==='facebook') url = 'https://www.facebook.com/sharer/sharer.php?u='+encodedLink+'&quote='+encodeURIComponent(msg.slice(0,200));
+  else if(platform==='twitter') url = 'https://twitter.com/intent/tweet?text='+encodeURIComponent(msg.slice(0,260));
+  else if(platform==='telegram') url = 'https://t.me/share/url?url='+encodedLink+'&text='+encodeURIComponent(msg.slice(0,200));
+  if(url) window.open(url,'_blank');
+}
+// ──────────────────────────────────────────
+
 // ── INIT ──
 document.getElementById('stat-n').textContent=CURATED.length+'+';
 filtered=[...CURATED];
 renderList();renderRecent();renderFavs();
+// Check for deep link (auto-play from URL)
+checkDeepLink();
 
 setTimeout(()=>{
   initMap();

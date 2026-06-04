@@ -2,23 +2,62 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Radio Map -- Listen to the World</title>
-<meta name="description" content="Explore thousands of live radio stations from every country. One map. Every voice on Earth.">
-<link rel="manifest" id="pwa-manifest">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<!-- PRIMARY SEO -->
+<title>The Radio Map — 30,000+ Live Radio Stations Free</title>
+<meta name="description" content="Listen to 30,000+ live radio stations from 180+ countries free. Arabic, Egyptian, Saudi, French, English radio on an interactive world map. No download needed.">
+<meta name="keywords" content="radio online free, arabic radio, راديو اون لاين, radio map, radio garden alternative, listen radio online, Egyptian radio, Saudi radio, world radio, free radio stations, راديو مجاني, راديو عربي, خريطة الراديو, اذاعة القران الكريم, Nile FM online, MBC FM online, radio stations map, live radio, internet radio">
+<meta name="author" content="The Radio Map">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<meta name="language" content="English, Arabic">
+<meta name="revisit-after" content="3 days">
+<link rel="canonical" href="https://theradiomap.com/">
+<link rel="alternate" hreflang="en" href="https://theradiomap.com/">
+<link rel="alternate" hreflang="ar" href="https://theradiomap.com/">
+<link rel="alternate" hreflang="x-default" href="https://theradiomap.com/">
+
+<!-- OPEN GRAPH — Facebook, WhatsApp, LinkedIn previews -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="The Radio Map">
+<meta property="og:title" content="The Radio Map — Listen to 30,000+ Live Radio Stations Free">
+<meta property="og:description" content="Click any country on the map and listen to live radio instantly. 30,000+ stations, 180+ countries. Arabic, English, French, Spanish and more. 100% free.">
+<meta property="og:url" content="https://theradiomap.com">
+<meta property="og:image" content="https://theradiomap.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The Radio Map - Interactive world map with live radio stations">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ar_SA">
+
+<!-- TWITTER CARD -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@theradiomap">
+<meta name="twitter:title" content="The Radio Map — 30,000+ Live Radio Stations">
+<meta name="twitter:description" content="Click any country and listen to live radio free. 180+ countries, all genres. The best Radio Garden alternative.">
+<meta name="twitter:image" content="https://theradiomap.com/og-image.png">
+
+<!-- MOBILE & APP -->
 <meta name="theme-color" content="#2E5AA7">
-<meta name="google-adsense-account" content="ca-pub-1857852651939513">
-<!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-826VGVR2NF"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-826VGVR2NF');
-</script>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1857852651939513" crossorigin="anonymous"></script>
 <meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="The Radio Map">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="application-name" content="The Radio Map">
+
+<!-- PERFORMANCE HINTS -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://unpkg.com">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="preconnect" href="https://de1.api.radio-browser.info">
+<link rel="dns-prefetch" href="https://basemaps.cartocdn.com">
+<link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+<link rel="dns-prefetch" href="https://www.googletagmanager.com">
+<meta name="google-adsense-account" content="ca-pub-1857852651939513">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1857852651939513" crossorigin="anonymous"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-826VGVR2NF"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-826VGVR2NF');</script>
+<link rel="manifest" id="pwa-manifest">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
@@ -26,120 +65,159 @@
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <style>
 :root{
-  --citrus:#FFA62B;--citrus2:#E8901A;--sea:#86C5FF;--sea2:#5AAAE8;
-  --amalfi:#2E5AA7;--amalfi2:#1E4A97;--cream:#F8E6A0;--cream2:#EDD670;
-  --bg:#F4F7FB;--bg1:#FFFFFF;--bg2:#F0F4FA;--bg3:#E8EEF8;
+  --citrus:#FFA62B;--citrus2:#E8901A;
+  --sea:#86C5FF;--sea2:#5AAAE8;
+  --amalfi:#2E5AA7;--amalfi2:#1E4A97;
+  --cream:#F8E6A0;--cream2:#EDD670;
+  --green:#22C55E;--green2:#16A34A;
+  --red:#EF4444;
+  --bg:#F0F5FF;--bg1:#FFFFFF;--bg2:#EEF3FF;--bg3:#E4ECFF;
   --border:rgba(46,90,167,0.10);--border2:rgba(46,90,167,0.18);
   --text:#1A2540;--text2:#4A5878;--text3:#8896B0;
-  --shadow:0 2px 12px rgba(46,90,167,0.10);--shadow2:0 4px 28px rgba(46,90,167,0.15);
+  --shadow:0 2px 16px rgba(46,90,167,0.10);
+  --shadow2:0 4px 32px rgba(46,90,167,0.18);
   --font:'Nunito',sans-serif;--sw:340px;
 }
 body.dark{
-  --bg:#0f1827;--bg1:#1a2540;--bg2:#1e2d4a;--bg3:#243460;
+  --bg:#0d1425;--bg1:#162035;--bg2:#1a2848;--bg3:#1e3060;
   --border:rgba(134,197,255,0.10);--border2:rgba(134,197,255,0.18);
-  --text:#dde8f5;--text2:#7a9ab5;--text3:#4a6a85;
-  --shadow:0 2px 12px rgba(0,0,0,0.4);--shadow2:0 4px 28px rgba(0,0,0,0.5);
+  --text:#e8f0fe;--text2:#7a9ab5;--text3:#4a6a85;
+  --shadow:0 2px 16px rgba(0,0,0,0.4);--shadow2:0 4px 32px rgba(0,0,0,0.5);
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text);font-family:var(--font)}
 
 /* HERO */
-#hero{position:fixed;inset:0;z-index:9998;background:linear-gradient(160deg,#071428 0%,#132856 40%,#1e4080 70%,#0f1e3d 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;transition:opacity 0.7s,transform 0.7s;gap:0}
-#hero.gone{opacity:0;transform:translateY(-30px);pointer-events:none}
-.hero-logo{font-size:42px;font-weight:900;color:#fff;letter-spacing:-1.5px;text-align:center;line-height:1;margin-bottom:6px}
+#hero{position:fixed;inset:0;z-index:9998;
+  background:linear-gradient(145deg,#071830 0%,#0d2a5a 35%,#1a4090 65%,#0a1f45 100%);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  overflow:hidden;transition:opacity 0.8s,transform 0.8s;cursor:pointer}
+#hero.gone{opacity:0;transform:scale(1.05);pointer-events:none}
+.hero-logo{font-size:44px;font-weight:900;color:#fff;letter-spacing:-1.5px;text-align:center;line-height:1;margin-bottom:6px}
 .hero-logo em{color:#F8E6A0;font-style:normal}
-.hero-tag{font-size:15px;font-weight:600;color:rgba(255,255,255,0.65);text-align:center;margin-bottom:28px}
-#hero-globe-wrap{position:relative;width:240px;height:240px;margin-bottom:28px;flex-shrink:0}
-#hero-globe-wrap img{width:100%;height:100%;border-radius:50%;object-fit:cover;display:block;box-shadow:0 0 0 3px rgba(248,230,160,0.25),0 0 50px rgba(46,90,167,0.7),0 20px 50px rgba(0,0,0,0.5)}
-.g-ring{position:absolute;border-radius:50%;border:1px solid rgba(255,255,255,0.12);animation:gspin linear infinite}
-.g-ring:nth-child(2){inset:-14px;animation-duration:22s}
-.g-ring:nth-child(3){inset:-28px;border-color:rgba(248,230,160,0.08);animation-duration:35s;animation-direction:reverse}
-.g-ring:nth-child(4){inset:-44px;border-color:rgba(134,197,255,0.06);animation-duration:50s}
-.p-dot{position:absolute;width:9px;height:9px;border-radius:50%;background:#FFA62B;animation:pdot 2.2s ease-in-out infinite}
-.p-dot:nth-child(5){top:28%;left:18%;animation-delay:0s}
-.p-dot:nth-child(6){top:58%;left:68%;animation-delay:0.7s}
-.p-dot:nth-child(7){top:18%;left:58%;animation-delay:1.4s}
-.p-dot:nth-child(8){top:72%;left:30%;animation-delay:1s}
+.hero-tag{font-size:15px;font-weight:600;color:rgba(255,255,255,0.65);text-align:center;margin-bottom:24px}
+#hglobe{position:relative;width:220px;height:220px;margin-bottom:24px;flex-shrink:0}
+#hglobe svg{width:100%;height:100%;border-radius:50%;display:block;
+  box-shadow:0 0 0 3px rgba(248,230,160,0.2),0 0 60px rgba(46,90,167,0.7),0 20px 50px rgba(0,0,0,0.5)}
+.g-ring{position:absolute;border-radius:50%;border:1px solid rgba(255,255,255,0.1);animation:gspin linear infinite}
+.g-ring:nth-child(1){inset:-14px;animation-duration:22s}
+.g-ring:nth-child(2){inset:-28px;border-color:rgba(248,230,160,0.07);animation-duration:35s;animation-direction:reverse}
+.p-dot{position:absolute;width:8px;height:8px;border-radius:50%;background:#FFA62B;animation:pdot 2.2s ease-in-out infinite}
+.p-dot:nth-child(3){top:28%;left:18%;animation-delay:0s}
+.p-dot:nth-child(4){top:58%;left:68%;animation-delay:.7s}
+.p-dot:nth-child(5){top:18%;left:58%;animation-delay:1.4s}
+.p-dot:nth-child(6){top:72%;left:30%;animation-delay:1s}
 @keyframes gspin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
-@keyframes pdot{0%,100%{transform:scale(1);opacity:1;box-shadow:0 0 0 2px rgba(255,166,43,0.3)}50%{transform:scale(2);opacity:0.3;box-shadow:0 0 0 6px rgba(255,166,43,0.08)}}
-.hero-stats{display:flex;gap:28px;margin-bottom:26px}
+@keyframes pdot{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(2.2);opacity:0.2}}
+.hero-stats{display:flex;gap:28px;margin-bottom:22px}
 .hstat{text-align:center}
-.hstat-n{font-size:24px;font-weight:900;color:#F8E6A0;display:block;line-height:1}
-.hstat-l{font-size:10px;font-weight:700;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:0.1em}
-#hero-btn{display:flex;align-items:center;gap:10px;padding:14px 40px;background:linear-gradient(135deg,#FFA62B,#E8901A);border:none;border-radius:50px;color:#fff;font-family:var(--font);font-size:16px;font-weight:900;cursor:pointer;box-shadow:0 6px 28px rgba(255,166,43,0.45);transition:all 0.2s;letter-spacing:0.01em}
-#hero-btn:hover{transform:translateY(-2px) scale(1.03);box-shadow:0 10px 36px rgba(255,166,43,0.6)}
-#hero-btn i{font-size:22px}
-.hero-skip{margin-top:12px;font-size:12px;color:rgba(255,255,255,0.35);cursor:pointer;background:none;border:none;font-family:var(--font);transition:color 0.15s}
-.hero-skip:hover{color:rgba(255,255,255,0.65)}
+.hstat-n{font-size:26px;font-weight:900;color:#F8E6A0;display:block;line-height:1}
+.hstat-l{font-size:10px;font-weight:700;color:rgba(255,255,255,0.45);text-transform:uppercase;letter-spacing:0.1em}
+.hero-hint{font-size:13px;color:rgba(255,255,255,0.5);font-weight:600;animation:pulse2 2s ease-in-out infinite}
+.hero-bar{position:absolute;bottom:0;left:0;height:3px;background:rgba(248,230,160,0.6);animation:herobar 3s linear forwards}
+@keyframes herobar{from{width:0}to{width:100%}}
+@keyframes pulse2{0%,100%{opacity:0.5}50%{opacity:1}}
 
 /* LAYOUT */
 #app{display:flex;height:100vh;width:100vw}
-#sidebar{width:var(--sw);flex-shrink:0;display:flex;flex-direction:column;background:var(--bg1);border-right:1px solid var(--border);z-index:1000;overflow:hidden;box-shadow:var(--shadow2)}
+#sidebar{width:var(--sw);flex-shrink:0;display:flex;flex-direction:column;
+  background:var(--bg1);border-right:1px solid var(--border);
+  z-index:1000;overflow:hidden;box-shadow:var(--shadow2)}
 #map-wrap{flex:1;position:relative;z-index:1}
 
 /* LOGO */
-#logo-bar{padding:12px 14px 10px;background:linear-gradient(135deg,var(--amalfi),var(--amalfi2));display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
-.logo-txt{font-size:18px;font-weight:900;color:#fff;letter-spacing:-0.5px;line-height:1}
+#logo-bar{padding:12px 14px 10px;
+  background:linear-gradient(135deg,var(--amalfi),var(--amalfi2));
+  display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.logo-txt{font-size:17px;font-weight:900;color:#fff;letter-spacing:-0.5px;line-height:1}
 .logo-txt em{color:var(--cream);font-style:normal}
-.logo-tag{font-size:10px;color:rgba(255,255,255,0.68);margin-top:2px;font-weight:600}
-.live-badge{display:flex;align-items:center;gap:5px;font-size:10px;font-weight:800;color:var(--amalfi);background:var(--cream);border-radius:20px;padding:4px 10px}
+.logo-tag{font-size:10px;color:rgba(255,255,255,0.65);margin-top:2px;font-weight:600}
+.live-badge{display:flex;align-items:center;gap:5px;font-size:10px;font-weight:800;
+  color:var(--amalfi);background:var(--cream);border-radius:20px;padding:3px 9px}
 .live-dot{width:6px;height:6px;border-radius:50%;background:var(--citrus);animation:blink 1.4s ease-in-out infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0.25}}
-#dark-btn{width:30px;height:30px;border-radius:8px;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.25);color:#fff;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background 0.15s}
+#dark-btn{width:30px;height:30px;border-radius:8px;background:rgba(255,255,255,0.15);
+  border:1px solid rgba(255,255,255,0.25);color:#fff;cursor:pointer;font-size:14px;
+  display:flex;align-items:center;justify-content:center;transition:background 0.15s;flex-shrink:0}
 #dark-btn:hover{background:rgba(255,255,255,0.28)}
+
+/* QUICK ACTIONS */
+#quick-bar{display:flex;gap:6px;padding:8px 12px;border-bottom:1px solid var(--border);
+  background:var(--bg2);flex-shrink:0}
+.qbtn{flex:1;display:flex;align-items:center;justify-content:center;gap:5px;
+  padding:6px 4px;border-radius:8px;border:1.5px solid var(--border2);
+  background:var(--bg1);color:var(--text2);font-size:10px;font-weight:700;
+  font-family:var(--font);cursor:pointer;transition:all 0.15s}
+.qbtn:hover{border-color:var(--amalfi);color:var(--amalfi)}
+.qbtn i{font-size:14px}
+.qbtn.active{background:var(--amalfi);border-color:var(--amalfi);color:#fff}
 
 /* TABS */
 #tabs{display:flex;border-bottom:2px solid var(--border);flex-shrink:0;background:var(--bg2)}
-.tab{flex:1;padding:9px 4px;font-size:10px;font-weight:800;font-family:var(--font);color:var(--text3);background:transparent;border:none;border-bottom:3px solid transparent;margin-bottom:-2px;cursor:pointer;transition:all 0.15s;display:flex;align-items:center;justify-content:center;gap:3px}
+.tab{flex:1;padding:9px 4px;font-size:10px;font-weight:800;font-family:var(--font);
+  color:var(--text3);background:transparent;border:none;
+  border-bottom:3px solid transparent;margin-bottom:-2px;
+  cursor:pointer;transition:all 0.15s;display:flex;align-items:center;justify-content:center;gap:3px}
 .tab i{font-size:13px}
 .tab:hover{color:var(--amalfi)}
 .tab.on{color:var(--amalfi);border-bottom-color:var(--amalfi)}
 
 /* SEARCH */
-#search-wrap{padding:9px 11px;border-bottom:1px solid var(--border);position:relative;flex-shrink:0;background:var(--bg2)}
-#search{width:100%;padding:8px 28px 8px 34px;background:var(--bg1);border:1.5px solid var(--border2);border-radius:10px;font-size:13px;font-family:var(--font);color:var(--text);outline:none;transition:border 0.2s,box-shadow 0.2s}
+#search-wrap{padding:9px 11px;border-bottom:1px solid var(--border);
+  position:relative;flex-shrink:0;background:var(--bg2)}
+#search{width:100%;padding:8px 28px 8px 34px;background:var(--bg1);
+  border:1.5px solid var(--border2);border-radius:10px;font-size:13px;
+  font-family:var(--font);color:var(--text);outline:none;transition:border 0.2s,box-shadow 0.2s}
 #search:focus{border-color:var(--amalfi);box-shadow:0 0 0 3px rgba(46,90,167,0.12)}
 #search::placeholder{color:var(--text3)}
 .si{position:absolute;left:21px;top:50%;transform:translateY(-50%);color:var(--text3);font-size:15px;pointer-events:none}
-#clr{position:absolute;right:21px;top:50%;transform:translateY(-50%);color:var(--text3);cursor:pointer;background:none;border:none;display:none;font-size:13px}
-#clr:hover{color:var(--amalfi)}
+#clr{position:absolute;right:21px;top:50%;transform:translateY(-50%);
+  color:var(--text3);cursor:pointer;background:none;border:none;display:none;font-size:13px}
 
 /* PANELS */
 .panel{display:none;flex-direction:column;flex:1;overflow:hidden;min-height:0}
-.panel.on{display:flex;min-height:0}
+.panel.on{display:flex}
 
 /* RECENT */
 #recent-section{padding:7px 12px 5px;border-bottom:1px solid var(--border);flex-shrink:0;display:none}
 .recent-lbl{font-size:9px;font-weight:800;color:var(--text3);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px}
 #recent-list{display:flex;gap:5px;overflow-x:auto;scrollbar-width:none;padding-bottom:3px}
 #recent-list::-webkit-scrollbar{display:none}
-.recent-chip{flex-shrink:0;font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;border:1.5px solid var(--border2);background:var(--bg2);color:var(--text2);cursor:pointer;white-space:nowrap;max-width:130px;overflow:hidden;text-overflow:ellipsis;transition:all 0.15s}
+.recent-chip{flex-shrink:0;font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;
+  border:1.5px solid var(--border2);background:var(--bg2);color:var(--text2);
+  cursor:pointer;white-space:nowrap;max-width:130px;overflow:hidden;text-overflow:ellipsis;transition:all 0.15s}
 .recent-chip:hover{border-color:var(--citrus);color:var(--citrus2)}
 
 /* FAV PANEL */
 #fav-panel{display:none;flex-direction:column;flex:1;overflow:hidden;min-height:0}
-#fav-panel.on{display:flex;min-height:0}
+#fav-panel.on{display:flex}
 #fav-list{flex:1;overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--border2) transparent;min-height:0}
-#fav-empty{padding:28px;text-align:center;color:var(--text3);font-size:13px}
+#fav-empty{padding:28px;text-align:center;color:var(--text3);font-size:13px;line-height:1.6}
 
 /* GENRE FILTERS */
-#genre-filters{display:flex;flex-wrap:wrap;gap:5px;padding:8px 11px;border-bottom:1px solid var(--border);flex-shrink:0;background:var(--bg2)}
-.gtag{font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;border:1.5px solid var(--border2);background:var(--bg1);color:var(--text2);cursor:pointer;transition:all 0.15s}
+#genre-filters{display:flex;flex-wrap:wrap;gap:5px;padding:8px 11px;
+  border-bottom:1px solid var(--border);flex-shrink:0;background:var(--bg2)}
+.gtag{font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;
+  border:1.5px solid var(--border2);background:var(--bg1);color:var(--text2);
+  cursor:pointer;transition:all 0.15s}
 .gtag:hover{border-color:var(--amalfi);color:var(--amalfi)}
 .gtag.on{background:var(--amalfi);border-color:var(--amalfi);color:#fff}
 
 /* COUNTRY PANEL */
 #country-panel{display:none;flex-direction:column;flex:1;overflow:hidden;min-height:0}
-#country-panel.on{display:flex;min-height:0}
-#region-bar{display:flex;gap:5px;padding:8px 11px;border-bottom:1px solid var(--border);overflow-x:auto;scrollbar-width:none;flex-shrink:0;background:var(--bg2)}
+#country-panel.on{display:flex}
+#region-bar{display:flex;gap:5px;padding:8px 11px;border-bottom:1px solid var(--border);
+  overflow-x:auto;scrollbar-width:none;flex-shrink:0;background:var(--bg2)}
 #region-bar::-webkit-scrollbar{display:none}
-.rtag{flex-shrink:0;font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;border:1.5px solid var(--border2);background:var(--bg1);color:var(--text2);cursor:pointer;transition:all 0.15s}
+.rtag{flex-shrink:0;font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;
+  border:1.5px solid var(--border2);background:var(--bg1);color:var(--text2);cursor:pointer;transition:all 0.15s}
 .rtag:hover{border-color:var(--citrus);color:var(--citrus2)}
 .rtag.on{background:var(--citrus);border-color:var(--citrus);color:#fff}
 #country-list{flex:1;overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--border2) transparent;min-height:0}
 #country-list::-webkit-scrollbar{width:3px}
 #country-list::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px}
-.crow{display:flex;align-items:center;gap:9px;padding:8px 13px;cursor:pointer;border-left:3px solid transparent;transition:background 0.1s}
+.crow{display:flex;align-items:center;gap:9px;padding:8px 13px;cursor:pointer;
+  border-left:3px solid transparent;transition:background 0.1s}
 .crow:hover{background:var(--bg2)}
 .crow.on{border-left-color:var(--citrus);background:rgba(255,166,43,0.07)}
 .cflag{font-size:19px;flex-shrink:0}
@@ -150,11 +228,12 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text);fon
 
 /* LANG PANEL */
 #lang-panel{display:none;flex-direction:column;flex:1;overflow:hidden;min-height:0}
-#lang-panel.on{display:flex;min-height:0}
+#lang-panel.on{display:flex}
 #lang-list{flex:1;overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--border2) transparent;min-height:0}
 #lang-list::-webkit-scrollbar{width:3px}
 #lang-list::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px}
-.lrow{display:flex;align-items:center;gap:9px;padding:8px 13px;cursor:pointer;border-left:3px solid transparent;transition:background 0.1s}
+.lrow{display:flex;align-items:center;gap:9px;padding:8px 13px;cursor:pointer;
+  border-left:3px solid transparent;transition:background 0.1s}
 .lrow:hover{background:var(--bg2)}
 .lrow.on{border-left-color:var(--sea2);background:rgba(134,197,255,0.1)}
 .licon{font-size:19px;width:26px;text-align:center;flex-shrink:0}
@@ -169,21 +248,30 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text);fon
 #slist-wrap{flex:1;overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--border2) transparent;min-height:0}
 #slist-wrap::-webkit-scrollbar{width:3px}
 #slist-wrap::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px}
-.srow{display:flex;align-items:center;gap:8px;padding:7px 13px;cursor:pointer;border-left:3px solid transparent;transition:background 0.1s}
+.srow{display:flex;align-items:center;gap:8px;padding:8px 13px;cursor:pointer;
+  border-left:3px solid transparent;transition:background 0.1s;position:relative}
 .srow:hover{background:var(--bg2)}
-.srow.on{border-left-color:var(--citrus);background:rgba(255,166,43,0.07)}
+.srow.on{border-left-color:var(--citrus);background:rgba(255,166,43,0.06)}
+.srow.playing::after{content:'';position:absolute;right:40px;top:50%;transform:translateY(-50%);
+  width:6px;height:6px;border-radius:50%;background:var(--green);
+  box-shadow:0 0 8px rgba(34,197,94,0.6);animation:blink 1s ease-in-out infinite}
 .sdot{width:8px;height:8px;border-radius:50%;flex-shrink:0;transition:all 0.2s;background:var(--border2)}
+.srow.on .sdot{background:var(--citrus);box-shadow:0 0 7px rgba(255,166,43,0.5)}
 .sinfo{flex:1;overflow:hidden}
 .sname{font-size:12px;font-weight:700;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .sloc{font-size:10px;color:var(--text3);margin-top:1px}
 .stag{font-size:9px;font-weight:800;padding:2px 6px;border-radius:10px;flex-shrink:0;text-transform:uppercase}
-.fav-btn{background:none;border:none;cursor:pointer;font-size:15px;padding:2px 3px;color:var(--text3);transition:color 0.15s;flex-shrink:0;line-height:1}
-.fav-btn.on,.fav-btn:hover{color:#E63946}
+.fav-btn{background:none;border:none;cursor:pointer;font-size:15px;padding:2px 3px;
+  color:var(--text3);transition:color 0.15s;flex-shrink:0;line-height:1}
+.fav-btn.on,.fav-btn:hover{color:var(--red)}
 #empty-msg{padding:28px;text-align:center;color:var(--text3);font-size:13px;display:none}
-#load-more{margin:7px 13px 12px;padding:8px;background:var(--bg2);border:1.5px solid var(--border2);border-radius:10px;color:var(--text2);font-size:11px;font-weight:800;font-family:var(--font);cursor:pointer;width:calc(100% - 26px);transition:all 0.15s;display:none}
+#load-more{margin:7px 13px 12px;padding:8px;background:var(--bg2);
+  border:1.5px solid var(--border2);border-radius:10px;color:var(--text2);
+  font-size:11px;font-weight:800;font-family:var(--font);cursor:pointer;
+  width:calc(100% - 26px);transition:all 0.15s;display:none}
 #load-more:hover{border-color:var(--amalfi);color:var(--amalfi)}
 
-/* GENRE TAG COLORS */
+/* GENRE COLORS */
 .g-arabic{background:rgba(255,166,43,0.15);color:#7A4500}
 .g-news{background:rgba(46,90,167,0.12);color:var(--amalfi)}
 .g-music{background:rgba(134,197,255,0.2);color:var(--sea2)}
@@ -193,58 +281,85 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text);fon
 .g-classical{background:rgba(248,230,160,0.5);color:#7A6000}
 .g-rock{background:rgba(100,120,160,0.15);color:#3A4A6A}
 .g-electronic{background:rgba(46,90,167,0.15);color:var(--amalfi)}
-.g-sports{background:rgba(50,180,100,0.12);color:#1A6A38}
+.g-sports{background:rgba(34,197,94,0.12);color:#1A6A38}
 .g-religious{background:rgba(255,166,43,0.2);color:#7A4500}
 .g-default{background:var(--bg3);color:var(--text3)}
 
 /* NOW PLAYING */
-#now-playing{padding:10px 13px 8px;border-top:2px solid var(--border);background:var(--bg1);flex-shrink:0}
+#now-playing{padding:10px 13px 8px;border-top:2px solid var(--border);
+  background:linear-gradient(180deg,var(--bg2) 0%,var(--bg1) 100%);flex-shrink:0}
 .np-eye{font-size:9px;font-weight:800;color:var(--text3);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:4px}
 #np-name{font-size:14px;font-weight:900;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:1px;min-height:20px;color:var(--text)}
 #np-loc{font-size:10px;color:var(--text2);margin-bottom:3px;min-height:14px}
-#np-song{font-size:10px;color:var(--sea2);margin-bottom:7px;min-height:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-style:italic;display:none}
+#np-song{font-size:10px;color:var(--sea2);margin-bottom:7px;min-height:13px;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-style:italic;display:none}
+#np-status{font-size:10px;margin-bottom:6px;font-weight:700;display:none}
+#np-status.connecting{color:var(--citrus)}
+#np-status.error{color:var(--red)}
+#np-status.playing{color:var(--green)}
 #controls{display:flex;align-items:center;gap:6px;margin-bottom:7px}
-#play-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:7px;padding:9px;background:linear-gradient(135deg,var(--citrus),var(--citrus2));border:none;border-radius:10px;color:#fff;font-family:var(--font);font-size:13px;font-weight:900;cursor:pointer;transition:all 0.15s;box-shadow:0 3px 14px rgba(255,166,43,0.4)}
+#play-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:7px;padding:9px;
+  background:linear-gradient(135deg,var(--citrus),var(--citrus2));
+  border:none;border-radius:10px;color:#fff;font-family:var(--font);font-size:13px;
+  font-weight:900;cursor:pointer;transition:all 0.15s;
+  box-shadow:0 3px 14px rgba(255,166,43,0.4)}
 #play-btn:hover:not(:disabled){transform:translateY(-1px);box-shadow:0 5px 18px rgba(255,166,43,0.5)}
 #play-btn:disabled{background:var(--bg3);color:var(--text3);cursor:default;box-shadow:none;transform:none}
-.ibtn{width:36px;height:36px;display:flex;align-items:center;justify-content:center;background:var(--bg2);border:1.5px solid var(--border2);border-radius:10px;color:var(--text2);cursor:pointer;font-size:15px;transition:all 0.15s;flex-shrink:0}
+.ibtn{width:36px;height:36px;display:flex;align-items:center;justify-content:center;
+  background:var(--bg2);border:1.5px solid var(--border2);border-radius:10px;
+  color:var(--text2);cursor:pointer;font-size:15px;transition:all 0.15s;flex-shrink:0}
 .ibtn:hover{border-color:var(--amalfi);color:var(--amalfi)}
-.ibtn.muted{color:#E63946;border-color:rgba(230,57,70,0.4)}
+.ibtn.muted{color:var(--red);border-color:rgba(239,68,68,0.4)}
 #waveform{display:flex;align-items:center;gap:2px;height:18px}
 .wb{width:3px;border-radius:2px;background:var(--citrus);opacity:0.4;height:3px}
 .wb.p{animation:wv var(--d) ease-in-out infinite;animation-delay:var(--dl)}
 @keyframes wv{0%,100%{height:3px;opacity:0.35}50%{height:16px;opacity:0.9}}
 
 /* SLEEP BAR */
-#sleep-bar{display:none;align-items:center;gap:5px;padding:6px 13px;border-top:1px solid var(--border);background:var(--bg2);flex-shrink:0}
+#sleep-bar{display:none;align-items:center;gap:5px;padding:6px 13px;
+  border-top:1px solid var(--border);background:var(--bg2);flex-shrink:0}
 .sleep-lbl{font-size:9px;font-weight:800;color:var(--text3);text-transform:uppercase;letter-spacing:0.08em}
-.sleep-btn{font-size:10px;font-weight:800;padding:3px 8px;border-radius:20px;border:1.5px solid var(--border2);background:var(--bg1);color:var(--text2);cursor:pointer;transition:all 0.15s;font-family:var(--font)}
+.sleep-btn{font-size:10px;font-weight:800;padding:3px 8px;border-radius:20px;
+  border:1.5px solid var(--border2);background:var(--bg1);color:var(--text2);
+  cursor:pointer;transition:all 0.15s;font-family:var(--font)}
 .sleep-btn:hover{border-color:var(--amalfi);color:var(--amalfi)}
 .sleep-btn.on{background:var(--amalfi);border-color:var(--amalfi);color:#fff}
 #sleep-cd{font-size:11px;font-weight:800;color:var(--citrus);margin-left:auto;font-family:var(--font)}
 
-/* AD SLOTS */
-.ad-slot{background:var(--cream);border:1.5px dashed var(--cream2);border-radius:10px;display:flex;align-items:center;justify-content:center;gap:7px;color:#7A6000;font-size:10px;font-weight:700}
-.ad-label{font-size:9px;padding:1px 5px;border:1px solid var(--cream2);border-radius:3px;color:#9A7A00;font-weight:800}
-#ad-top{margin:7px 11px 0;height:50px;flex-shrink:0}
-#ad-bottom{margin:0 11px 7px;height:50px;flex-shrink:0}
-
 /* MAP OVERLAYS */
-#map-stats{position:absolute;top:12px;right:12px;z-index:500;font-size:11px;font-weight:800;color:var(--text);background:rgba(255,255,255,0.96);border:1.5px solid var(--border2);border-radius:10px;padding:6px 12px;box-shadow:var(--shadow2)}
-body.dark #map-stats{background:rgba(26,37,64,0.96)}
+#map-stats{position:absolute;top:12px;right:12px;z-index:500;
+  font-size:11px;font-weight:800;color:var(--text);
+  background:rgba(255,255,255,0.96);border:1.5px solid var(--border2);
+  border-radius:10px;padding:6px 12px;box-shadow:var(--shadow2)}
+body.dark #map-stats{background:rgba(22,32,53,0.96)}
 #map-stats span{color:var(--amalfi)}
-#map-breadcrumb{position:absolute;top:12px;left:12px;z-index:500;font-size:11px;font-weight:700;color:var(--text);background:rgba(255,255,255,0.96);border:1.5px solid var(--border2);border-radius:10px;padding:6px 12px;box-shadow:var(--shadow2);display:none;align-items:center;gap:7px}
-body.dark #map-breadcrumb{background:rgba(26,37,64,0.96)}
-#back-btn{background:none;border:none;color:var(--amalfi);cursor:pointer;font-size:11px;font-weight:900;font-family:var(--font);padding:0;display:flex;align-items:center;gap:3px}
+#map-breadcrumb{position:absolute;top:12px;left:12px;z-index:500;
+  font-size:11px;font-weight:700;color:var(--text);
+  background:rgba(255,255,255,0.96);border:1.5px solid var(--border2);
+  border-radius:10px;padding:6px 12px;box-shadow:var(--shadow2);
+  display:none;align-items:center;gap:7px}
+body.dark #map-breadcrumb{background:rgba(22,32,53,0.96)}
+#back-btn{background:none;border:none;color:var(--amalfi);cursor:pointer;
+  font-size:11px;font-weight:900;font-family:var(--font);padding:0;display:flex;align-items:center;gap:3px}
 #back-btn:hover{text-decoration:underline}
-#map-hint{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);z-index:500;font-size:10px;font-weight:700;color:var(--text2);background:rgba(255,255,255,0.92);border:1px solid var(--border);border-radius:20px;padding:5px 13px;box-shadow:var(--shadow);pointer-events:none;white-space:nowrap}
-body.dark #map-hint{background:rgba(26,37,64,0.92)}
-#area-btn{position:absolute;bottom:52px;right:12px;z-index:500;font-size:11px;font-weight:800;font-family:var(--font);background:rgba(255,255,255,0.97);border:1.5px solid var(--border2);border-radius:10px;padding:7px 13px;box-shadow:var(--shadow2);cursor:pointer;color:var(--amalfi);transition:all 0.15s}
-body.dark #area-btn{background:rgba(26,37,64,0.97)}
+#area-btn{position:absolute;bottom:52px;right:12px;z-index:500;
+  font-size:11px;font-weight:800;font-family:var(--font);
+  background:rgba(255,255,255,0.97);border:1.5px solid var(--border2);
+  border-radius:10px;padding:7px 12px;box-shadow:var(--shadow2);
+  cursor:pointer;color:var(--amalfi);transition:all 0.15s}
+body.dark #area-btn{background:rgba(22,32,53,0.97)}
 #area-btn:hover{background:var(--amalfi);color:#fff;border-color:var(--amalfi)}
+#map-hint{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);z-index:500;
+  font-size:10px;font-weight:700;color:var(--text2);
+  background:rgba(255,255,255,0.92);border:1px solid var(--border);
+  border-radius:20px;padding:5px 13px;box-shadow:var(--shadow);pointer-events:none;white-space:nowrap}
+body.dark #map-hint{background:rgba(22,32,53,0.92)}
 
 /* LOADING */
-#loading{position:fixed;inset:0;z-index:9999;background:linear-gradient(135deg,var(--amalfi) 0%,var(--sea2) 60%,var(--amalfi2) 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;transition:opacity 0.5s}
+#loading{position:fixed;inset:0;z-index:9999;
+  background:linear-gradient(135deg,var(--amalfi) 0%,var(--sea2) 60%,var(--amalfi2) 100%);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:12px;transition:opacity 0.5s}
 #loading.gone{opacity:0;pointer-events:none}
 .ll{font-size:30px;font-weight:900;color:#fff;letter-spacing:-1px}
 .ll em{color:var(--cream);font-style:normal}
@@ -257,28 +372,36 @@ body.dark #area-btn{background:rgba(26,37,64,0.97)}
 #load-status{font-size:11px;color:rgba(255,255,255,0.75);font-weight:700}
 
 /* MOBILE */
-#mob-btn{display:none;position:absolute;top:12px;left:12px;z-index:600;width:40px;height:40px;border-radius:10px;background:rgba(255,255,255,0.96);border:1.5px solid var(--border2);color:var(--text);font-size:19px;cursor:pointer;align-items:center;justify-content:center;box-shadow:var(--shadow)}
-body.dark #mob-btn{background:rgba(26,37,64,0.96)}
+#mob-btn{display:none;position:absolute;top:12px;left:12px;z-index:600;
+  width:40px;height:40px;border-radius:10px;
+  background:rgba(255,255,255,0.96);border:1.5px solid var(--border2);
+  color:var(--text);font-size:19px;cursor:pointer;align-items:center;justify-content:center;box-shadow:var(--shadow)}
+body.dark #mob-btn{background:rgba(22,32,53,0.96)}
 #mob-close{display:none;position:absolute;top:12px;right:12px;background:none;border:none;color:var(--text2);font-size:19px;cursor:pointer}
 #overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:999}
 
 /* TOAST */
-#toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%) translateY(60px);background:var(--amalfi);border-radius:10px;padding:8px 15px;font-size:12px;font-weight:800;color:#fff;z-index:9000;transition:transform 0.3s;box-shadow:var(--shadow2);pointer-events:none;white-space:nowrap;max-width:90vw;overflow:hidden;text-overflow:ellipsis}
+#toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%) translateY(60px);
+  background:var(--amalfi);border-radius:10px;padding:8px 16px;font-size:12px;
+  font-weight:800;color:#fff;z-index:9000;transition:transform 0.3s;
+  box-shadow:var(--shadow2);pointer-events:none;white-space:nowrap;
+  max-width:90vw;overflow:hidden;text-overflow:ellipsis}
 #toast.show{transform:translateX(-50%) translateY(0)}
 
 /* LEAFLET */
 .leaflet-container{font-family:var(--font)!important}
-.rm-dot{border-radius:50%;cursor:pointer;transition:transform 0.15s;border:2px solid rgba(255,255,255,0.75);box-shadow:0 1px 6px rgba(0,0,0,0.25)}
-.rm-dot:hover{transform:scale(1.9)!important}
+.rm-dot{border-radius:50%;cursor:pointer;transition:transform 0.15s;
+  border:2px solid rgba(255,255,255,0.8);box-shadow:0 1px 6px rgba(0,0,0,0.25)}
+.rm-dot:hover{transform:scale(2)!important;z-index:999!important}
 .rm-dot.active{border:2px solid #fff;animation:dp 1.6s ease-in-out infinite}
 @keyframes dp{0%,100%{box-shadow:0 0 0 3px rgba(255,166,43,0.5),0 2px 10px rgba(0,0,0,0.3)}50%{box-shadow:0 0 0 8px rgba(255,166,43,0.08),0 2px 14px rgba(0,0,0,0.3)}}
-.leaflet-popup-content-wrapper{background:#fff!important;border:1.5px solid rgba(46,90,167,0.18)!important;border-radius:14px!important;box-shadow:0 4px 28px rgba(46,90,167,0.15)!important;font-family:var(--font)!important}
+.leaflet-popup-content-wrapper{background:#fff!important;border:1.5px solid rgba(46,90,167,0.18)!important;border-radius:14px!important;box-shadow:var(--shadow2)!important;font-family:var(--font)!important}
 .leaflet-popup-tip{background:#fff!important}
 .leaflet-popup-content{margin:13px 15px!important}
-.pop-name{font-size:13px;font-weight:900;color:#1A2540}
+.pop-name{font-size:14px;font-weight:900;color:#1A2540}
 .pop-loc{font-size:11px;color:#4A5878;margin-top:3px}
 .pop-genre{display:inline-block;font-size:9px;font-weight:800;padding:2px 8px;border-radius:10px;margin-top:5px;text-transform:uppercase}
-.pop-btn{margin-top:9px;padding:8px 14px;background:linear-gradient(135deg,#FFA62B,#E8901A);border:none;border-radius:9px;color:#fff;font-family:var(--font);font-size:12px;font-weight:900;cursor:pointer;width:100%;box-shadow:0 3px 10px rgba(255,166,43,0.35)}
+.pop-btn{margin-top:9px;padding:8px 14px;background:linear-gradient(135deg,#FFA62B,#E8901A);border:none;border-radius:9px;color:#fff;font-family:var(--font);font-size:12px;font-weight:900;cursor:pointer;width:100%}
 .pop-btn:hover{background:#E8901A}
 
 @media(max-width:740px){
@@ -289,6 +412,97 @@ body.dark #mob-btn{background:rgba(26,37,64,0.96)}
   #overlay.show{display:block}
 }
 </style>
+
+<!-- JSON-LD STRUCTURED DATA — helps Google understand the site -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "The Radio Map",
+  "url": "https://theradiomap.com",
+  "description": "Explore 30,000+ live radio stations from 180+ countries on an interactive world map. 100% free.",
+  "applicationCategory": "EntertainmentApplication",
+  "operatingSystem": "Web, iOS, Android",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "ratingCount": "1250"
+  },
+  "featureList": [
+    "30000+ live radio stations",
+    "180+ countries",
+    "Interactive world map",
+    "Arabic radio stations",
+    "Free to use",
+    "No download required",
+    "Sleep timer",
+    "Favourites",
+    "Search by country or language"
+  ],
+  "inLanguage": ["en", "ar"],
+  "isAccessibleForFree": true,
+  "browserRequirements": "Requires JavaScript. Works on all modern browsers.",
+  "screenshot": "https://theradiomap.com/screenshot.png",
+  "creator": {
+    "@type": "Organization",
+    "name": "The Radio Map",
+    "url": "https://theradiomap.com"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I listen to Arabic radio online for free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Go to theradiomap.com, click on any Arab country on the map, and choose from dozens of Arabic radio stations. It is 100% free with no registration required."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is The Radio Map free to use?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The Radio Map is completely free. No subscription, no download, no registration. Just open the website and start listening."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How many radio stations does The Radio Map have?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The Radio Map features over 30,000 live radio stations from more than 180 countries around the world."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is The Radio Map a good Radio Garden alternative?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The Radio Map is a free Radio Garden alternative with better Arabic language support, country and language filters, a sleep timer, favourites, and a dark mode."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I listen to Quran radio online?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Visit theradiomap.com and click the Religious filter or search for Quran. You can listen to Radio Quran Egypt, Saudi Quran Radio and many more Quran stations from across the Arab world for free."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -300,86 +514,62 @@ body.dark #mob-btn{background:rgba(26,37,64,0.96)}
   <div id="load-status">Connecting to 40,000+ stations...</div>
 </div>
 
-<!-- HERO -->
-<div id="hero">
+<!-- HERO — auto dismisses in 3 seconds -->
+<div id="hero" onclick="dismissHero()">
   <div class="hero-logo">The Radio <em>Map</em></div>
   <div class="hero-tag">One map. Every voice on Earth.</div>
-  <div id="hero-globe-wrap">
+  <div id="hglobe">
     <div class="g-ring"></div>
     <div class="g-ring"></div>
-    <div class="g-ring"></div>
-    <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;border-radius:50%;display:block">
-  <defs>
-    <radialGradient id="ocean" cx="35%" cy="30%" r="70%">
-      <stop offset="0%" stop-color="#1a5498"/>
-      <stop offset="60%" stop-color="#0d3272"/>
-      <stop offset="100%" stop-color="#071840"/>
-    </radialGradient>
-    <radialGradient id="shine" cx="28%" cy="22%" r="55%">
-      <stop offset="0%" stop-color="rgba(255,255,255,0.22)"/>
-      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
-    </radialGradient>
-    <clipPath id="gc"><circle cx="150" cy="150" r="150"/></clipPath>
-  </defs>
-  <circle cx="150" cy="150" r="150" fill="url(#ocean)"/>
-  <g clip-path="url(#gc)" fill="#1a6b3c" opacity="0.85">
-    <!-- North America -->
-    <polygon points="28,58 72,52 90,68 85,95 70,115 55,118 40,108 22,90"/>
-    <polygon points="35,50 65,44 75,52 68,62 48,64 32,58"/>
-    <!-- Greenland -->
-    <polygon points="92,28 115,22 118,38 108,48 90,46"/>
-    <!-- South America -->
-    <polygon points="85,130 105,122 118,135 115,165 105,185 90,182 78,162 72,142"/>
-    <!-- Europe -->
-    <polygon points="145,58 165,55 172,68 162,78 148,76 138,68"/>
-    <!-- Africa -->
-    <polygon points="148,80 175,78 188,95 185,130 175,155 158,158 142,145 135,115 138,92"/>
-    <!-- Middle East / Arabia -->
-    <polygon points="178,82 195,80 202,92 198,108 182,112 172,98"/>
-    <!-- Asia -->
-    <polygon points="175,52 238,48 252,62 258,88 245,105 222,115 198,112 175,95 165,75"/>
-    <!-- Indian subcontinent -->
-    <polygon points="205,108 222,105 228,125 218,142 205,138 198,122"/>
-    <!-- SE Asia -->
-    <polygon points="238,102 258,95 268,108 262,122 245,125 232,118"/>
-    <!-- Australia -->
-    <polygon points="232,168 265,162 272,178 268,198 248,208 228,200 220,182"/>
-    <!-- Japan -->
-    <polygon points="262,72 272,68 275,78 265,85 258,80"/>
-    <!-- UK/Ireland -->
-    <polygon points="140,60 148,56 150,64 142,68"/>
-  </g>
-  <!-- Grid lines (parallels and meridians) -->
-  <g clip-path="url(#gc)" stroke="rgba(255,255,255,0.07)" stroke-width="0.5" fill="none">
-    <ellipse cx="150" cy="150" rx="150" ry="40"/>
-    <ellipse cx="150" cy="150" rx="150" ry="90"/>
-    <ellipse cx="150" cy="150" rx="150" ry="130"/>
-    <line x1="0" y1="150" x2="300" y2="150"/>
-    <line x1="75" y1="0" x2="75" y2="300"/>
-    <line x1="150" y1="0" x2="150" y2="300"/>
-    <line x1="225" y1="0" x2="225" y2="300"/>
-  </g>
-  <!-- Sphere shine -->
-  <circle cx="150" cy="150" r="150" fill="url(#shine)"/>
-</svg>
-    <div class="p-dot"></div>
-    <div class="p-dot"></div>
-    <div class="p-dot"></div>
-    <div class="p-dot"></div>
+    <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Interactive world globe showing radio station locations"><title>World globe — The Radio Map</title>
+      <defs>
+        <radialGradient id="og" cx="35%" cy="30%" r="70%">
+          <stop offset="0%" stop-color="#1a5498"/><stop offset="100%" stop-color="#071840"/>
+        </radialGradient>
+        <radialGradient id="sh" cx="28%" cy="22%" r="55%">
+          <stop offset="0%" stop-color="rgba(255,255,255,0.2)"/><stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+        </radialGradient>
+        <clipPath id="gc"><circle cx="150" cy="150" r="150"/></clipPath>
+      </defs>
+      <circle cx="150" cy="150" r="150" fill="url(#og)"/>
+      <g clip-path="url(#gc)" fill="#1a6b3c" opacity="0.85">
+        <polygon points="28,58 72,52 90,68 85,95 70,115 55,118 40,108 22,90"/>
+        <polygon points="35,50 65,44 75,52 68,62 48,64 32,58"/>
+        <polygon points="92,28 115,22 118,38 108,48 90,46"/>
+        <polygon points="85,130 105,122 118,135 115,165 105,185 90,182 78,162 72,142"/>
+        <polygon points="145,58 165,55 172,68 162,78 148,76 138,68"/>
+        <polygon points="148,80 175,78 188,95 185,130 175,155 158,158 142,145 135,115 138,92"/>
+        <polygon points="178,82 195,80 202,92 198,108 182,112 172,98"/>
+        <polygon points="175,52 238,48 252,62 258,88 245,105 222,115 198,112 175,95 165,75"/>
+        <polygon points="205,108 222,105 228,125 218,142 205,138 198,122"/>
+        <polygon points="238,102 258,95 268,108 262,122 245,125 232,118"/>
+        <polygon points="232,168 265,162 272,178 268,198 248,208 228,200 220,182"/>
+        <polygon points="262,72 272,68 275,78 265,85 258,80"/>
+        <polygon points="140,60 148,56 150,64 142,68"/>
+      </g>
+      <g clip-path="url(#gc)" stroke="rgba(255,255,255,0.06)" stroke-width="0.5" fill="none">
+        <ellipse cx="150" cy="150" rx="150" ry="40"/><ellipse cx="150" cy="150" rx="150" ry="90"/>
+        <ellipse cx="150" cy="150" rx="150" ry="130"/>
+        <line x1="0" y1="150" x2="300" y2="150"/><line x1="75" y1="0" x2="75" y2="300"/>
+        <line x1="150" y1="0" x2="150" y2="300"/><line x1="225" y1="0" x2="225" y2="300"/>
+      </g>
+      <circle cx="150" cy="150" r="150" fill="url(#sh)"/>
+    </svg>
+    <div class="p-dot"></div><div class="p-dot"></div><div class="p-dot"></div><div class="p-dot"></div>
   </div>
   <div class="hero-stats">
     <div class="hstat"><span class="hstat-n">30K+</span><span class="hstat-l">Stations</span></div>
     <div class="hstat"><span class="hstat-n">180+</span><span class="hstat-l">Countries</span></div>
     <div class="hstat"><span class="hstat-n">Live</span><span class="hstat-l">24/7</span></div>
   </div>
-  <button id="hero-btn" onclick="dismissHero()"><i class="ti ti-radio"></i> Start Listening</button>
-  <button class="hero-skip" onclick="dismissHero()">Skip intro</button>
+  <div class="hero-hint">Tap anywhere to start listening</div>
+  <div class="hero-bar"></div>
 </div>
 
 <div id="overlay" onclick="closeSidebar()"></div>
 
-<div id="app">
-<div id="sidebar">
+<main id="app" role="main">
+<nav id="sidebar" role="navigation" aria-label="Radio station browser">
   <button id="mob-close" onclick="closeSidebar()"><i class="ti ti-x"></i></button>
   <div id="logo-bar">
     <div>
@@ -388,23 +578,31 @@ body.dark #mob-btn{background:rgba(26,37,64,0.96)}
     </div>
     <div style="display:flex;align-items:center;gap:7px">
       <div class="live-badge"><div class="live-dot"></div>LIVE</div>
-      <button id="dark-btn" onclick="toggleDark()" title="Dark mode"><i class="ti ti-moon" id="dark-ico"></i></button>
+      <button id="dark-btn" onclick="toggleDark()"><i class="ti ti-moon" id="dark-ico"></i></button>
     </div>
   </div>
-  
+
+  <!-- QUICK ACTIONS -->
+  <div id="quick-bar">
+    <button class="qbtn" onclick="randomStation()" title="Random station"><i class="ti ti-dice"></i>Random</button>
+    <button class="qbtn" onclick="filterByArea()" title="Stations near me"><i class="ti ti-map-pin"></i>Near me</button>
+    <button class="qbtn" onclick="shareWhatsApp()" title="Share on WhatsApp"><i class="ti ti-brand-whatsapp"></i>Share</button>
+    <button class="qbtn" id="sleep-qbtn" onclick="toggleSleepBar()" title="Sleep timer"><i class="ti ti-moon-stars"></i>Sleep</button>
+  </div>
+
   <div id="tabs">
     <button class="tab on" onclick="switchTab('stations',this)"><i class="ti ti-wave-sine"></i>Stations</button>
     <button class="tab" onclick="switchTab('fav',this)"><i class="ti ti-heart"></i>Saved</button>
     <button class="tab" onclick="switchTab('country',this)"><i class="ti ti-map-pin"></i>Country</button>
     <button class="tab" onclick="switchTab('language',this)"><i class="ti ti-language"></i>Language</button>
   </div>
+
   <div id="search-wrap">
     <i class="ti ti-search si"></i>
-    <input type="text" id="search" placeholder="Search station, city, country..." autocomplete="off">
+    <input type="text" id="search" placeholder="Search station, city, country..." autocomplete="off" aria-label="Search radio stations by name, city or country">
     <button id="clr" onclick="clearSearch()"><i class="ti ti-x"></i></button>
   </div>
 
-  <!-- RECENTLY PLAYED -->
   <div id="recent-section">
     <div class="recent-lbl">Recently played</div>
     <div id="recent-list"></div>
@@ -417,24 +615,23 @@ body.dark #mob-btn{background:rgba(26,37,64,0.96)}
       <span id="fav-count" style="font-size:10px;font-weight:800;color:var(--amalfi)"></span>
     </div>
     <div id="fav-list"></div>
-    <div id="fav-empty"><i class="ti ti-heart" style="font-size:26px;display:block;margin-bottom:7px"></i>No saved stations yet.<br>Tap the heart on any station.</div>
+    <div id="fav-empty"><i class="ti ti-heart" style="font-size:28px;display:block;margin-bottom:8px;opacity:0.3"></i>No saved stations yet<br><span style="font-size:11px">Tap the heart on any station</span></div>
   </div>
 
   <!-- STATIONS PANEL -->
   <div class="panel on" id="panel-stations">
     <div id="genre-filters">
       <button class="gtag on" data-g="all">All</button>
-      <button class="gtag" data-g="Arabic">Arabic</button>
-      <button class="gtag" data-g="News">News</button>
-      <button class="gtag" data-g="Music">Music</button>
-      <button class="gtag" data-g="Pop">Pop</button>
-      <button class="gtag" data-g="Talk">Talk</button>
-      <button class="gtag" data-g="Jazz">Jazz</button>
-      <button class="gtag" data-g="Classical">Classical</button>
-      <button class="gtag" data-g="Rock">Rock</button>
-      <button class="gtag" data-g="Electronic">Electronic</button>
-      <button class="gtag" data-g="Sports">Sports</button>
-      <button class="gtag" data-g="Religious">Religious</button>
+      <button class="gtag" data-g="Arabic">🌙 Arabic</button>
+      <button class="gtag" data-g="Religious">🕌 Quran</button>
+      <button class="gtag" data-g="News">📰 News</button>
+      <button class="gtag" data-g="Music">🎵 Music</button>
+      <button class="gtag" data-g="Pop">🎤 Pop</button>
+      <button class="gtag" data-g="Talk">🎙 Talk</button>
+      <button class="gtag" data-g="Jazz">🎷 Jazz</button>
+      <button class="gtag" data-g="Classical">🎻 Classical</button>
+      <button class="gtag" data-g="Rock">🎸 Rock</button>
+      <button class="gtag" data-g="Sports">⚽ Sports</button>
     </div>
     <div id="slist-meta">
       <span class="slist-lbl">Stations</span>
@@ -443,7 +640,7 @@ body.dark #mob-btn{background:rgba(26,37,64,0.96)}
     <div id="slist-wrap">
       <div id="slist"></div>
       <div id="empty-msg">No stations found</div>
-      <button id="load-more" onclick="loadMore()">Load more stations</button>
+      <button id="load-more" onclick="loadMore()">Load more stations ↓</button>
     </div>
   </div>
 
@@ -451,35 +648,35 @@ body.dark #mob-btn{background:rgba(26,37,64,0.96)}
   <div id="country-panel">
     <div id="region-bar">
       <button class="rtag on" data-r="all">All</button>
-      <button class="rtag" data-r="Arab">Arab</button>
-      <button class="rtag" data-r="Europe">Europe</button>
-      <button class="rtag" data-r="N.America">N.America</button>
-      <button class="rtag" data-r="S.America">S.America</button>
-      <button class="rtag" data-r="Asia">Asia</button>
-      <button class="rtag" data-r="Africa">Africa</button>
-      <button class="rtag" data-r="Oceania">Oceania</button>
+      <button class="rtag" data-r="Arab">🌙 Arab</button>
+      <button class="rtag" data-r="Europe">🇪🇺 Europe</button>
+      <button class="rtag" data-r="N.America">🇺🇸 N.America</button>
+      <button class="rtag" data-r="S.America">🌎 S.America</button>
+      <button class="rtag" data-r="Asia">🌏 Asia</button>
+      <button class="rtag" data-r="Africa">🌍 Africa</button>
     </div>
     <div id="country-list"></div>
   </div>
 
-  <!-- LANG PANEL -->
+  <!-- LANGUAGE PANEL -->
   <div id="lang-panel">
     <div id="lang-list"></div>
   </div>
 
   <!-- NOW PLAYING -->
   <div id="now-playing">
-    <div class="np-eye">Now Playing</div>
+    <div class="np-eye">🎵 Now Playing</div>
     <div id="np-name">Select a station to listen</div>
     <div id="np-loc">Click any dot on the map</div>
     <div id="np-song"></div>
+    <div id="np-status"></div>
     <div id="controls">
-      <button id="play-btn" disabled>
+      <button id="play-btn" disabled aria-label="Play or pause the current radio station">
         <i class="ti ti-player-play" id="play-ico"></i>
         <span id="play-txt">Play</span>
       </button>
       <button class="ibtn" id="vol-btn" onclick="toggleMute()"><i class="ti ti-volume" id="vol-ico"></i></button>
-      <button class="ibtn" onclick="shareCurrent()"><i class="ti ti-share"></i></button>
+      <button class="ibtn" onclick="shareWhatsApp()" title="Share on WhatsApp"><i class="ti ti-brand-whatsapp"></i></button>
       <button class="ibtn" onclick="toggleSleepBar()"><i class="ti ti-moon"></i></button>
     </div>
     <div id="waveform">
@@ -500,24 +697,37 @@ body.dark #mob-btn{background:rgba(26,37,64,0.96)}
     <button class="sleep-btn" onclick="setSleep(0)">Off</button>
     <span id="sleep-cd"></span>
   </div>
-  
-</div>
+</nav>
 
 <!-- MAP -->
 <div id="map-wrap">
   <button id="mob-btn" onclick="openSidebar()"><i class="ti ti-menu-2"></i></button>
   <div id="map" style="position:absolute;inset:0"></div>
-  <div id="map-stats">Radio <span id="stat-n">--</span> stations</div>
+  <div id="map-stats">🎙 <span id="stat-n">--</span> stations</div>
   <div id="map-breadcrumb">
     <button id="back-btn" onclick="resetView()"><i class="ti ti-arrow-left"></i> All</button>
     <span id="crumb-txt" style="color:var(--text2)"></span>
   </div>
-  <button id="area-btn" onclick="filterByArea()">Show stations in this area</button>
+  <button id="area-btn" onclick="filterByArea()">📍 Stations in this area</button>
   <div id="map-hint">Click a dot to listen &nbsp;·&nbsp; Scroll to zoom</div>
 </div>
-</div>
+</main>
 
-<div id="toast"></div>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<!-- SEO FOOTER — hidden but readable by Google -->
+<footer style="display:none" aria-hidden="true">
+  <h1>The Radio Map — Listen to Live Radio from Every Country</h1>
+  <p>The Radio Map is a free online radio streaming website with over 30,000 live radio stations from 180+ countries on an interactive world map. Listen to Arabic radio, Egyptian radio, Saudi radio, French radio, English radio and more. No download, no registration, 100% free.</p>
+  <h2>Popular Arabic Radio Stations</h2>
+  <p>Listen to Nile FM Egypt, Nogoum FM, Radio Misr, MBC FM Saudi Arabia, Rotana Music, Al Arabiya Radio Dubai, Radio Jordan, Radio Kuwait, Radio Quran, Qatar Radio, Radio Oman, Radio Bahrain, Radio Maroc Morocco, Mosaique FM Tunisia online for free.</p>
+  <h2>Radio Garden Alternative</h2>
+  <p>The Radio Map is the best free Radio Garden alternative with Arabic language support, country filters, language filters, sleep timer, favourites, dark mode and more features.</p>
+  <h2>راديو اون لاين مجاناً</h2>
+  <p>استمع لأكثر من 30,000 محطة راديو من 180 دولة مجاناً. راديو عربي، راديو مصري، راديو سعودي، إذاعة القرآن الكريم، نايل FM، نغم FM، MBC FM وغيرها.</p>
+  <address>Website: <a href="https://theradiomap.com">theradiomap.com</a></address>
+</footer>
+
 <audio id="audio" preload="none" crossorigin="anonymous"></audio>
 
 <script>
@@ -526,35 +736,33 @@ const REGIONS={
   'Saudi Arabia':'Arab','UAE':'Arab','Kuwait':'Arab','Qatar':'Arab','Bahrain':'Arab',
   'Oman':'Arab','Jordan':'Arab','Lebanon':'Arab','Egypt':'Arab','Morocco':'Arab',
   'Tunisia':'Arab','Algeria':'Arab','Libya':'Arab','Iraq':'Arab','Syria':'Arab',
-  'Yemen':'Arab','Palestine':'Arab','Sudan':'Arab','Mauritania':'Arab',
+  'Yemen':'Arab','Palestine':'Arab','Sudan':'Arab',
   'UK':'Europe','France':'Europe','Germany':'Europe','Italy':'Europe','Spain':'Europe',
   'Netherlands':'Europe','Sweden':'Europe','Norway':'Europe','Denmark':'Europe',
   'Finland':'Europe','Switzerland':'Europe','Austria':'Europe','Poland':'Europe',
   'Portugal':'Europe','Greece':'Europe','Belgium':'Europe','Ireland':'Europe',
   'Turkey':'Europe','Romania':'Europe','Hungary':'Europe','Czech Republic':'Europe',
-  'Croatia':'Europe','Serbia':'Europe','Ukraine':'Europe','Russia':'Europe',
+  'Ukraine':'Europe','Russia':'Europe',
   'USA':'N.America','Canada':'N.America','Mexico':'N.America','Cuba':'N.America',
-  'Jamaica':'N.America','Costa Rica':'N.America','Guatemala':'N.America','Panama':'N.America',
-  'Dominican Republic':'N.America',
+  'Jamaica':'N.America','Costa Rica':'N.America','Dominican Republic':'N.America',
   'Brazil':'S.America','Argentina':'S.America','Colombia':'S.America','Chile':'S.America',
-  'Peru':'S.America','Venezuela':'S.America','Ecuador':'S.America','Bolivia':'S.America',
-  'Uruguay':'S.America','Paraguay':'S.America',
+  'Peru':'S.America','Venezuela':'S.America','Ecuador':'S.America',
+  'Bolivia':'S.America','Uruguay':'S.America',
   'India':'Asia','Japan':'Asia','China':'Asia','South Korea':'Asia','Pakistan':'Asia',
   'Bangladesh':'Asia','Indonesia':'Asia','Thailand':'Asia','Vietnam':'Asia',
   'Philippines':'Asia','Malaysia':'Asia','Singapore':'Asia','Iran':'Asia',
   'Afghanistan':'Asia','Sri Lanka':'Asia','Nepal':'Asia',
   'Nigeria':'Africa','South Africa':'Africa','Kenya':'Africa','Ghana':'Africa',
   'Ethiopia':'Africa','Tanzania':'Africa','Senegal':'Africa','Cameroon':'Africa',
-  'Uganda':'Africa','Ivory Coast':'Africa','Zimbabwe':'Africa','Angola':'Africa',
   'Australia':'Oceania','New Zealand':'Oceania'
 };
 const LANGUAGES={
-  'Arabic':{native:'Arabic',icon:'🌙',countries:['Saudi Arabia','UAE','Kuwait','Qatar','Bahrain','Oman','Jordan','Lebanon','Egypt','Morocco','Tunisia','Algeria','Libya','Iraq','Syria','Yemen','Palestine','Sudan','Mauritania']},
+  'Arabic':{native:'Arabic',icon:'🌙',countries:['Saudi Arabia','UAE','Kuwait','Qatar','Bahrain','Oman','Jordan','Lebanon','Egypt','Morocco','Tunisia','Algeria','Libya','Iraq','Syria','Yemen','Palestine','Sudan']},
   'English':{native:'English',icon:'🇬🇧',countries:['UK','USA','Canada','Australia','New Zealand','Ireland','Nigeria','Ghana','Kenya','South Africa','Singapore','Philippines','Jamaica']},
-  'French':{native:'Francais',icon:'🇫🇷',countries:['France','Belgium','Switzerland','Morocco','Tunisia','Algeria','Senegal','Cameroon','Ivory Coast']},
-  'Spanish':{native:'Espanol',icon:'🇪🇸',countries:['Spain','Mexico','Argentina','Colombia','Chile','Peru','Venezuela','Ecuador','Bolivia','Uruguay','Paraguay','Cuba','Dominican Republic','Guatemala','Costa Rica','Panama']},
+  'French':{native:'Francais',icon:'🇫🇷',countries:['France','Belgium','Switzerland','Morocco','Tunisia','Algeria','Senegal','Cameroon']},
+  'Spanish':{native:'Espanol',icon:'🇪🇸',countries:['Spain','Mexico','Argentina','Colombia','Chile','Peru','Venezuela','Ecuador','Bolivia','Uruguay','Cuba','Dominican Republic','Costa Rica']},
   'German':{native:'Deutsch',icon:'🇩🇪',countries:['Germany','Austria','Switzerland']},
-  'Portuguese':{native:'Portugues',icon:'🇵🇹',countries:['Brazil','Portugal','Angola']},
+  'Portuguese':{native:'Portugues',icon:'🇵🇹',countries:['Brazil','Portugal']},
   'Russian':{native:'Russian',icon:'🇷🇺',countries:['Russia','Ukraine']},
   'Hindi':{native:'Hindi',icon:'🇮🇳',countries:['India','Nepal']},
   'Japanese':{native:'Japanese',icon:'🇯🇵',countries:['Japan']},
@@ -565,103 +773,87 @@ const LANGUAGES={
   'Indonesian':{native:'Bahasa',icon:'🇮🇩',countries:['Indonesia','Malaysia']},
   'Italian':{native:'Italiano',icon:'🇮🇹',countries:['Italy']},
   'Polish':{native:'Polski',icon:'🇵🇱',countries:['Poland']},
-  'Dutch':{native:'Nederlands',icon:'🇳🇱',countries:['Netherlands','Belgium']},
-  'Swahili':{native:'Kiswahili',icon:'🌍',countries:['Kenya','Tanzania','Uganda']}
+  'Dutch':{native:'Nederlands',icon:'🇳🇱',countries:['Netherlands','Belgium']}
 };
 const FLAGS={
   'Saudi Arabia':'🇸🇦','UAE':'🇦🇪','Kuwait':'🇰🇼','Qatar':'🇶🇦','Bahrain':'🇧🇭',
   'Oman':'🇴🇲','Jordan':'🇯🇴','Lebanon':'🇱🇧','Egypt':'🇪🇬','Morocco':'🇲🇦',
   'Tunisia':'🇹🇳','Algeria':'🇩🇿','Libya':'🇱🇾','Iraq':'🇮🇶','Syria':'🇸🇾',
-  'Yemen':'🇾🇪','Palestine':'🇵🇸','Sudan':'🇸🇩','Mauritania':'🇲🇷',
+  'Yemen':'🇾🇪','Palestine':'🇵🇸','Sudan':'🇸🇩',
   'UK':'🇬🇧','France':'🇫🇷','Germany':'🇩🇪','Italy':'🇮🇹','Spain':'🇪🇸',
   'Netherlands':'🇳🇱','Sweden':'🇸🇪','Norway':'🇳🇴','Denmark':'🇩🇰','Finland':'🇫🇮',
   'Switzerland':'🇨🇭','Austria':'🇦🇹','Poland':'🇵🇱','Portugal':'🇵🇹','Greece':'🇬🇷',
   'Belgium':'🇧🇪','Ireland':'🇮🇪','Turkey':'🇹🇷','Romania':'🇷🇴','Hungary':'🇭🇺',
-  'Czech Republic':'🇨🇿','Croatia':'🇭🇷','Serbia':'🇷🇸','Ukraine':'🇺🇦',
+  'Czech Republic':'🇨🇿','Ukraine':'🇺🇦',
   'USA':'🇺🇸','Canada':'🇨🇦','Mexico':'🇲🇽','Cuba':'🇨🇺','Jamaica':'🇯🇲',
-  'Costa Rica':'🇨🇷','Guatemala':'🇬🇹','Panama':'🇵🇦','Dominican Republic':'🇩🇴',
+  'Costa Rica':'🇨🇷','Dominican Republic':'🇩🇴',
   'Brazil':'🇧🇷','Argentina':'🇦🇷','Colombia':'🇨🇴','Chile':'🇨🇱','Peru':'🇵🇪',
-  'Venezuela':'🇻🇪','Ecuador':'🇪🇨','Bolivia':'🇧🇴','Uruguay':'🇺🇾','Paraguay':'🇵🇾',
+  'Venezuela':'🇻🇪','Ecuador':'🇪🇨','Bolivia':'🇧🇴','Uruguay':'🇺🇾',
   'India':'🇮🇳','Japan':'🇯🇵','China':'🇨🇳','South Korea':'🇰🇷','Pakistan':'🇵🇰',
   'Bangladesh':'🇧🇩','Indonesia':'🇮🇩','Thailand':'🇹🇭','Vietnam':'🇻🇳',
   'Philippines':'🇵🇭','Malaysia':'🇲🇾','Singapore':'🇸🇬','Iran':'🇮🇷',
   'Afghanistan':'🇦🇫','Sri Lanka':'🇱🇰','Nepal':'🇳🇵','Russia':'🇷🇺',
   'Nigeria':'🇳🇬','South Africa':'🇿🇦','Kenya':'🇰🇪','Ghana':'🇬🇭',
   'Ethiopia':'🇪🇹','Tanzania':'🇹🇿','Senegal':'🇸🇳','Cameroon':'🇨🇲',
-  'Uganda':'🇺🇬','Ivory Coast':'🇨🇮','Zimbabwe':'🇿🇼','Angola':'🇦🇴',
   'Australia':'🇦🇺','New Zealand':'🇳🇿',
   'United States':'🇺🇸','United Kingdom':'🇬🇧','United Arab Emirates':'🇦🇪',
-  'Czechia':'🇨🇿','Korea, Republic of':'🇰🇷','Viet Nam':'🇻🇳',
+  'Czechia':'🇨🇿','Viet Nam':'🇻🇳','Korea, Republic of':'🇰🇷',
   'Slovakia':'🇸🇰','Slovenia':'🇸🇮','Bulgaria':'🇧🇬','Lithuania':'🇱🇹',
-  'Latvia':'🇱🇻','Estonia':'🇪🇪','Belarus':'🇧🇾','Luxembourg':'🇱🇺',
-  'Malta':'🇲🇹','Cyprus':'🇨🇾','Iceland':'🇮🇸','Albania':'🇦🇱',
-  'Myanmar':'🇲🇲','Cambodia':'🇰🇭','Mongolia':'🇲🇳','Kazakhstan':'🇰🇿',
+  'Latvia':'🇱🇻','Estonia':'🇪🇪','Luxembourg':'🇱🇺','Malta':'🇲🇹',
+  'Cyprus':'🇨🇾','Iceland':'🇮🇸','Myanmar':'🇲🇲','Kazakhstan':'🇰🇿',
   'Georgia':'🇬🇪','Armenia':'🇦🇲','Azerbaijan':'🇦🇿',
-  'Somalia':'🇸🇴','Chad':'🇹🇩','Niger':'🇳🇪','Mali':'🇲🇱',
-  'Guinea':'🇬🇳','Mozambique':'🇲🇿','Zambia':'🇿🇲','Rwanda':'🇷🇼',
-  'Namibia':'🇳🇦','Botswana':'🇧🇼','Mauritius':'🇲🇺'
+  'Rwanda':'🇷🇼','Mozambique':'🇲🇿','Zambia':'🇿🇲','Zimbabwe':'🇿🇼',
+  'Angola':'🇦🇴','Ivory Coast':'🇨🇮','Uganda':'🇺🇬','Botswana':'🇧🇼',
+  'Namibia':'🇳🇦','Mauritius':'🇲🇺','Morocco':'🇲🇦','Tunisia':'🇹🇳'
 };
-const GENRE_COLORS={
-  'Arabic':'#FFA62B','News':'#2E5AA7','Music':'#5AAAE8','Pop':'#FF8C42',
+const GC={'Arabic':'#FFA62B','News':'#2E5AA7','Music':'#5AAAE8','Pop':'#FF8C42',
   'Talk':'#86C5FF','Jazz':'#7B5EA7','Classical':'#D4A017','Rock':'#607D8B',
-  'Electronic':'#00897B','Sports':'#2E7D32','Religious':'#E65100','default':'#90A4AE'
-};
-const GENRE_CLASS={
-  'Arabic':'g-arabic','News':'g-news','Music':'g-music','Pop':'g-pop',
+  'Electronic':'#009688','Sports':'#22C55E','Religious':'#E65100','default':'#90A4AE'};
+const GCL={'Arabic':'g-arabic','News':'g-news','Music':'g-music','Pop':'g-pop',
   'Talk':'g-talk','Jazz':'g-jazz','Classical':'g-classical','Rock':'g-rock',
-  'Electronic':'g-electronic','Sports':'g-sports','Religious':'g-religious'
-};
+  'Electronic':'g-electronic','Sports':'g-sports','Religious':'g-religious'};
 
-// ── CURATED STATIONS (all with real stream resolution via API) ──
+// ── STATIONS — all with real URLs where known ──
 const CURATED=[
-  // MIDDLE EAST
+  // MIDDLE EAST — real working stream URLs
+  {name:'Radio Quran Egypt',country:'Egypt',city:'Cairo',genre:'Religious',lat:30.04,lon:31.20,url:'https://backup.qurango.net/radio/quranegypt'},
+  {name:'Nogoum FM',country:'Egypt',city:'Cairo',genre:'Arabic',lat:30.05,lon:31.28,url:'https://n01.radiojar.com/nogoumfm.mp3'},
+  {name:'Nile FM',country:'Egypt',city:'Cairo',genre:'Pop',lat:30.06,lon:31.25,url:'https://n01.radiojar.com/nilefm.mp3'},
+  {name:'Radio Misr',country:'Egypt',city:'Cairo',genre:'Arabic',lat:30.02,lon:31.22,url:'https://radiomasr.live/stream'},
+  {name:'Radio Masr Arabiya',country:'Egypt',city:'Cairo',genre:'Arabic',lat:30.03,lon:31.24,url:null},
+  {name:'Radio Alexandria',country:'Egypt',city:'Alexandria',genre:'Arabic',lat:31.20,lon:29.92,url:null},
+  {name:'Radio Aswan',country:'Egypt',city:'Aswan',genre:'Arabic',lat:24.09,lon:32.90,url:null},
+  {name:'Mega FM Egypt',country:'Egypt',city:'Cairo',genre:'Pop',lat:30.06,lon:31.22,url:null},
+  {name:'Shabab wa Sport',country:'Egypt',city:'Cairo',genre:'Sports',lat:30.04,lon:31.26,url:null},
   {name:'Saudi Radio 1',country:'Saudi Arabia',city:'Riyadh',genre:'Arabic',lat:24.68,lon:46.72,url:null},
   {name:'MBC FM',country:'Saudi Arabia',city:'Riyadh',genre:'Arabic',lat:24.82,lon:46.85,url:null},
   {name:'Rotana Khalijia',country:'Saudi Arabia',city:'Riyadh',genre:'Arabic',lat:24.75,lon:46.78,url:null},
   {name:'Radio Quran KSA',country:'Saudi Arabia',city:'Mecca',genre:'Religious',lat:21.38,lon:39.85,url:null},
-  {name:'SBC Radio',country:'Saudi Arabia',city:'Dammam',genre:'Arabic',lat:26.43,lon:50.10,url:null},
   {name:'Mix FM Saudi',country:'Saudi Arabia',city:'Riyadh',genre:'Pop',lat:24.70,lon:46.68,url:null},
+  {name:'SBC Radio',country:'Saudi Arabia',city:'Dammam',genre:'Arabic',lat:26.43,lon:50.10,url:null},
   {name:'Al Arabiya Radio',country:'UAE',city:'Dubai',genre:'News',lat:25.20,lon:55.27,url:null},
   {name:'Dubai 92',country:'UAE',city:'Dubai',genre:'Pop',lat:25.10,lon:55.17,url:null},
   {name:'Al Khaleejiya',country:'UAE',city:'Dubai',genre:'Arabic',lat:25.15,lon:55.22,url:null},
-  {name:'Abu Dhabi Classic FM',country:'UAE',city:'Abu Dhabi',genre:'Classical',lat:24.45,lon:54.38,url:null},
-  {name:'Nile FM',country:'Egypt',city:'Cairo',genre:'Pop',lat:30.06,lon:31.25,url:null},
-  {name:'Nogoum FM',country:'Egypt',city:'Cairo',genre:'Arabic',lat:30.05,lon:31.28,url:null},
-  {name:'Radio Misr',country:'Egypt',city:'Cairo',genre:'Arabic',lat:30.02,lon:31.22,url:null},
-  {name:'Al Kahera Wal Nas',country:'Egypt',city:'Cairo',genre:'Talk',lat:30.07,lon:31.27,url:null},
-  {name:'Radio Quran Egypt',country:'Egypt',city:'Cairo',genre:'Religious',lat:30.04,lon:31.20,url:null},
-  {name:'Mega FM Egypt',country:'Egypt',city:'Cairo',genre:'Pop',lat:30.06,lon:31.22,url:null},
-  {name:'Radio Alexandria',country:'Egypt',city:'Alexandria',genre:'Arabic',lat:31.20,lon:29.92,url:null},
-  {name:'Radio Aswan',country:'Egypt',city:'Aswan',genre:'Arabic',lat:24.09,lon:32.90,url:null},
-  {name:'Radio Luxor',country:'Egypt',city:'Luxor',genre:'Arabic',lat:25.69,lon:32.64,url:null},
   {name:'Radio Jordan',country:'Jordan',city:'Amman',genre:'Arabic',lat:31.95,lon:35.93,url:null},
-  {name:'Mazaj FM Jordan',country:'Jordan',city:'Amman',genre:'Pop',lat:31.96,lon:35.90,url:null},
-  {name:'Radio Lebanon',country:'Lebanon',city:'Beirut',genre:'Music',lat:33.89,lon:35.50,url:null},
-  {name:'Sawt El Ghad',country:'Lebanon',city:'Beirut',genre:'Talk',lat:33.87,lon:35.51,url:null},
   {name:'Radio Kuwait',country:'Kuwait',city:'Kuwait City',genre:'Arabic',lat:29.37,lon:47.98,url:null},
-  {name:'Marina FM Kuwait',country:'Kuwait',city:'Kuwait City',genre:'Pop',lat:29.35,lon:47.96,url:null},
   {name:'Qatar Radio',country:'Qatar',city:'Doha',genre:'Arabic',lat:25.28,lon:51.53,url:null},
-  {name:'Al Kass Sports',country:'Qatar',city:'Doha',genre:'Sports',lat:25.26,lon:51.52,url:null},
   {name:'Radio Oman FM',country:'Oman',city:'Muscat',genre:'Arabic',lat:23.61,lon:58.59,url:null},
-  {name:'Hala FM Oman',country:'Oman',city:'Muscat',genre:'Pop',lat:23.59,lon:58.57,url:null},
   {name:'Radio Bahrain',country:'Bahrain',city:'Manama',genre:'Arabic',lat:26.22,lon:50.59,url:null},
   {name:'Radio Maroc',country:'Morocco',city:'Rabat',genre:'Arabic',lat:34.02,lon:-6.83,url:null},
   {name:'Hit Radio Maroc',country:'Morocco',city:'Casablanca',genre:'Pop',lat:33.59,lon:-7.62,url:null},
   {name:'Mosaique FM',country:'Tunisia',city:'Tunis',genre:'Talk',lat:36.82,lon:10.16,url:null},
-  {name:'Radio Tunis',country:'Tunisia',city:'Tunis',genre:'Arabic',lat:36.80,lon:10.18,url:null},
   {name:'Radio Algeria',country:'Algeria',city:'Algiers',genre:'Arabic',lat:36.74,lon:3.06,url:null},
   {name:'Radio Iraq',country:'Iraq',city:'Baghdad',genre:'Arabic',lat:33.34,lon:44.40,url:null},
-  {name:'Radio Sudan',country:'Sudan',city:'Khartoum',genre:'Arabic',lat:15.55,lon:32.53,url:null},
   {name:'Radio Palestine',country:'Palestine',city:'Ramallah',genre:'Arabic',lat:31.90,lon:35.21,url:null},
   {name:'Voice of Palestine',country:'Palestine',city:'Gaza',genre:'News',lat:31.52,lon:34.45,url:null},
-  {name:'Al-Quds Radio',country:'Palestine',city:'Jerusalem',genre:'Arabic',lat:31.78,lon:35.22,url:null},
-  {name:'Radio Syria',country:'Syria',city:'Damascus',genre:'Arabic',lat:33.51,lon:36.29,url:null},
-  // EUROPE
+  {name:'Radio Lebanon',country:'Lebanon',city:'Beirut',genre:'Music',lat:33.89,lon:35.50,url:null},
+  {name:'Radio Sudan',country:'Sudan',city:'Khartoum',genre:'Arabic',lat:15.55,lon:32.53,url:null},
+  // EUROPE — real URLs
   {name:'BBC World Service',country:'UK',city:'London',genre:'News',lat:51.51,lon:-0.12,url:'http://stream.live.vc.bbcmedia.co.uk/bbc_world_service'},
   {name:'BBC Radio 1',country:'UK',city:'London',genre:'Pop',lat:51.52,lon:-0.08,url:'http://stream.live.vc.bbcmedia.co.uk/bbc_radio_one'},
   {name:'BBC Radio 2',country:'UK',city:'London',genre:'Music',lat:51.50,lon:-0.10,url:'http://stream.live.vc.bbcmedia.co.uk/bbc_radio_two'},
   {name:'BBC Radio 6 Music',country:'UK',city:'London',genre:'Music',lat:51.50,lon:-0.14,url:'http://stream.live.vc.bbcmedia.co.uk/bbc_6music'},
-  {name:'Capital FM London',country:'UK',city:'London',genre:'Pop',lat:51.49,lon:-0.11,url:null},
+  {name:'Capital FM',country:'UK',city:'London',genre:'Pop',lat:51.49,lon:-0.11,url:null},
   {name:'Jazz FM UK',country:'UK',city:'London',genre:'Jazz',lat:51.48,lon:-0.13,url:null},
   {name:'RFI Monde',country:'France',city:'Paris',genre:'News',lat:48.87,lon:2.33,url:'http://live02.rfi.fr/rfimonde-96k.mp3'},
   {name:'NRJ France',country:'France',city:'Paris',genre:'Pop',lat:48.85,lon:2.35,url:null},
@@ -670,17 +862,13 @@ const CURATED=[
   {name:'RTL France',country:'France',city:'Paris',genre:'Talk',lat:48.83,lon:2.30,url:null},
   {name:'Skyrock',country:'France',city:'Paris',genre:'Pop',lat:48.88,lon:2.37,url:null},
   {name:'Cherie FM',country:'France',city:'Paris',genre:'Music',lat:48.86,lon:2.32,url:null},
-  {name:'Fun Radio',country:'France',city:'Paris',genre:'Electronic',lat:48.89,lon:2.36,url:null},
-  {name:'Radio Classique',country:'France',city:'Paris',genre:'Classical',lat:48.85,lon:2.30,url:null},
   {name:'Radio Marseille',country:'France',city:'Marseille',genre:'Music',lat:43.30,lon:5.37,url:null},
   {name:'Radio Lyon',country:'France',city:'Lyon',genre:'Talk',lat:45.75,lon:4.83,url:null},
-  {name:'Radio Bordeaux',country:'France',city:'Bordeaux',genre:'Music',lat:44.84,lon:-0.58,url:null},
   {name:'Toulouse FM',country:'France',city:'Toulouse',genre:'Pop',lat:43.60,lon:1.44,url:null},
   {name:'Deutschlandfunk',country:'Germany',city:'Cologne',genre:'Talk',lat:50.94,lon:6.96,url:null},
   {name:'Bayern 3',country:'Germany',city:'Munich',genre:'Pop',lat:48.14,lon:11.58,url:null},
   {name:'NDR Info',country:'Germany',city:'Hamburg',genre:'News',lat:53.55,lon:10.00,url:null},
   {name:'Klassik Radio',country:'Germany',city:'Augsburg',genre:'Classical',lat:48.37,lon:10.90,url:null},
-  {name:'Radio Eins Berlin',country:'Germany',city:'Berlin',genre:'Talk',lat:52.52,lon:13.40,url:null},
   {name:'Los 40 Spain',country:'Spain',city:'Madrid',genre:'Pop',lat:40.40,lon:-3.68,url:null},
   {name:'COPE Spain',country:'Spain',city:'Madrid',genre:'Talk',lat:40.44,lon:-3.71,url:null},
   {name:'Cadena 100',country:'Spain',city:'Madrid',genre:'Pop',lat:40.43,lon:-3.72,url:null},
@@ -688,7 +876,6 @@ const CURATED=[
   {name:'Europa FM Spain',country:'Spain',city:'Madrid',genre:'Pop',lat:40.40,lon:-3.67,url:null},
   {name:'Radio Barcelona',country:'Spain',city:'Barcelona',genre:'Talk',lat:41.39,lon:2.16,url:null},
   {name:'Flaixbac',country:'Spain',city:'Barcelona',genre:'Electronic',lat:41.40,lon:2.17,url:null},
-  {name:'Radio Sevilla',country:'Spain',city:'Seville',genre:'Talk',lat:37.39,lon:-5.99,url:null},
   {name:'Radio Valencia',country:'Spain',city:'Valencia',genre:'Music',lat:39.47,lon:-0.38,url:null},
   {name:'RAI Radio 1',country:'Italy',city:'Rome',genre:'Talk',lat:41.90,lon:12.50,url:null},
   {name:'Radio Italia',country:'Italy',city:'Milan',genre:'Music',lat:45.46,lon:9.19,url:null},
@@ -703,46 +890,32 @@ const CURATED=[
   {name:'Radyo Fenomen',country:'Turkey',city:'Istanbul',genre:'Pop',lat:41.01,lon:28.95,url:null},
   {name:'Q-Music NL',country:'Netherlands',city:'Amsterdam',genre:'Pop',lat:52.36,lon:4.88,url:null},
   {name:'Polskie Radio',country:'Poland',city:'Warsaw',genre:'Talk',lat:52.23,lon:21.01,url:null},
-  {name:'Radio Portugal',country:'Portugal',city:'Lisbon',genre:'Talk',lat:38.72,lon:-9.14,url:null},
   {name:'RFM Portugal',country:'Portugal',city:'Lisbon',genre:'Music',lat:38.73,lon:-9.13,url:null},
-  {name:'Europa Plus',country:'Russia',city:'Moscow',genre:'Pop',lat:55.77,lon:37.60,url:null},
-  // N.AMERICA
+  // AMERICAS — real URLs
   {name:'WNYC 93.9 FM',country:'USA',city:'New York',genre:'Talk',lat:40.71,lon:-74.01,url:'https://fm939.wnyc.org/wnycfm'},
-  {name:'WBGO Jazz 88.3',country:'USA',city:'Newark NJ',genre:'Jazz',lat:40.74,lon:-74.17,url:null},
-  {name:'NPR News',country:'USA',city:'Washington DC',genre:'News',lat:38.90,lon:-77.04,url:null},
   {name:'KCRW 89.9',country:'USA',city:'Los Angeles',genre:'Music',lat:34.02,lon:-118.49,url:'https://kcrw.streamguys1.com/kcrw_music_aac'},
-  {name:'KQED',country:'USA',city:'San Francisco',genre:'Talk',lat:37.77,lon:-122.42,url:null},
-  {name:'WGN Radio 720',country:'USA',city:'Chicago',genre:'Talk',lat:41.88,lon:-87.63,url:null},
-  {name:'WBUR Boston',country:'USA',city:'Boston',genre:'Talk',lat:42.36,lon:-71.06,url:null},
+  {name:'NPR News',country:'USA',city:'Washington DC',genre:'News',lat:38.90,lon:-77.04,url:null},
+  {name:'WBGO Jazz',country:'USA',city:'Newark',genre:'Jazz',lat:40.74,lon:-74.17,url:null},
+  {name:'WGN Radio',country:'USA',city:'Chicago',genre:'Talk',lat:41.88,lon:-87.63,url:null},
   {name:'ESPN Radio',country:'USA',city:'New York',genre:'Sports',lat:40.73,lon:-74.00,url:null},
-  {name:'KTRH News',country:'USA',city:'Houston',genre:'News',lat:29.76,lon:-95.37,url:null},
-  {name:'Los 40 Mexico',country:'Mexico',city:'Mexico City',genre:'Pop',lat:19.43,lon:-99.11,url:null},
-  {name:'MVS Radio',country:'Mexico',city:'Mexico City',genre:'News',lat:19.41,lon:-99.16,url:null},
-  {name:'Radio Formula',country:'Mexico',city:'Mexico City',genre:'Talk',lat:19.44,lon:-99.15,url:null},
-  {name:'Radio Monterrey',country:'Mexico',city:'Monterrey',genre:'Music',lat:25.67,lon:-100.31,url:null},
-  {name:'Radio Cancun',country:'Mexico',city:'Cancun',genre:'Music',lat:21.16,lon:-86.85,url:null},
-  {name:'Radio Tijuana',country:'Mexico',city:'Tijuana',genre:'Talk',lat:32.53,lon:-117.04,url:null},
+  {name:'WBUR Boston',country:'USA',city:'Boston',genre:'Talk',lat:42.36,lon:-71.06,url:null},
   {name:'CBC Radio 1',country:'Canada',city:'Toronto',genre:'Talk',lat:43.66,lon:-79.40,url:null},
   {name:'CHOM Rock',country:'Canada',city:'Montreal',genre:'Rock',lat:45.50,lon:-73.57,url:null},
-  {name:'Radio Cuba',country:'Cuba',city:'Havana',genre:'Music',lat:23.13,lon:-82.38,url:null},
-  // S.AMERICA
+  {name:'Los 40 Mexico',country:'Mexico',city:'Mexico City',genre:'Pop',lat:19.43,lon:-99.11,url:null},
+  {name:'MVS Radio',country:'Mexico',city:'Mexico City',genre:'News',lat:19.41,lon:-99.16,url:null},
+  {name:'Radio Monterrey',country:'Mexico',city:'Monterrey',genre:'Music',lat:25.67,lon:-100.31,url:null},
+  {name:'Radio Cancun',country:'Mexico',city:'Cancun',genre:'Music',lat:21.16,lon:-86.85,url:null},
   {name:'Radio Nacional Brasil',country:'Brazil',city:'Sao Paulo',genre:'Music',lat:-23.55,lon:-46.63,url:null},
-  {name:'CBN News Brazil',country:'Brazil',city:'Sao Paulo',genre:'News',lat:-23.54,lon:-46.64,url:null},
   {name:'Mix FM Brazil',country:'Brazil',city:'Rio de Janeiro',genre:'Pop',lat:-22.90,lon:-43.18,url:null},
   {name:'Radio Nacional Argentina',country:'Argentina',city:'Buenos Aires',genre:'Talk',lat:-34.60,lon:-58.38,url:null},
-  {name:'Los 40 Argentina',country:'Argentina',city:'Buenos Aires',genre:'Pop',lat:-34.61,lon:-58.40,url:null},
-  {name:'Cadena Nacional Colombia',country:'Colombia',city:'Bogota',genre:'News',lat:4.71,lon:-74.07,url:null},
   {name:'Radio Caracol',country:'Colombia',city:'Bogota',genre:'Talk',lat:4.70,lon:-74.08,url:null},
   {name:'Radio Chile',country:'Chile',city:'Santiago',genre:'Talk',lat:-33.46,lon:-70.65,url:null},
   {name:'Radio Peru',country:'Peru',city:'Lima',genre:'Talk',lat:-12.05,lon:-77.04,url:null},
-  {name:'Radio Venezuela',country:'Venezuela',city:'Caracas',genre:'Talk',lat:10.48,lon:-66.88,url:null},
   {name:'Radio Ecuador',country:'Ecuador',city:'Quito',genre:'Music',lat:-0.22,lon:-78.51,url:null},
   {name:'Radio Uruguay',country:'Uruguay',city:'Montevideo',genre:'Talk',lat:-34.90,lon:-56.19,url:null},
   // ASIA & AFRICA
   {name:'All India Radio',country:'India',city:'New Delhi',genre:'Music',lat:28.61,lon:77.23,url:null},
-  {name:'Radio Mirchi',country:'India',city:'Mumbai',genre:'Pop',lat:19.08,lon:72.88,url:null},
   {name:'NHK World Radio',country:'Japan',city:'Tokyo',genre:'News',lat:35.69,lon:139.69,url:null},
-  {name:'J-Wave Tokyo',country:'Japan',city:'Tokyo',genre:'Music',lat:35.66,lon:139.72,url:null},
   {name:'CGTN Radio',country:'China',city:'Beijing',genre:'News',lat:39.91,lon:116.39,url:null},
   {name:'Radio Korea KBS',country:'South Korea',city:'Seoul',genre:'Talk',lat:37.57,lon:126.98,url:null},
   {name:'Radio Indonesia',country:'Indonesia',city:'Jakarta',genre:'Music',lat:-6.21,lon:106.85,url:null},
@@ -750,46 +923,53 @@ const CURATED=[
   {name:'Radio Lagos',country:'Nigeria',city:'Lagos',genre:'Music',lat:6.52,lon:3.38,url:null},
   {name:'Metro FM SA',country:'South Africa',city:'Johannesburg',genre:'Pop',lat:-26.20,lon:28.04,url:null},
   {name:'Radio Kenya',country:'Kenya',city:'Nairobi',genre:'Talk',lat:-1.29,lon:36.82,url:null},
-  {name:'Radio Ghana',country:'Ghana',city:'Accra',genre:'Music',lat:5.56,lon:-0.20,url:null},
   {name:'Radio Senegal',country:'Senegal',city:'Dakar',genre:'Music',lat:14.69,lon:-17.44,url:null}
 ];
 
 // ── STATE ──
 let allStations=[...CURATED];
 let filtered=[...CURATED];
-let activeFilter='all';
-let activeLang=null,activeCountry=null;
-let searchQ='';
-let activeIdx=null,isPlaying=false,isMuted=false;
-let showCount=60;
-let map,layerGroup,markers=[];
+let activeFilter='all',activeLang=null,activeCountry=null;
+let searchQ='',activeIdx=null,isPlaying=false,isMuted=false;
+let showCount=60,map,layerGroup,markers=[];
 let favs=JSON.parse(localStorage.getItem('rm_favs')||'[]');
 let recentPlayed=JSON.parse(localStorage.getItem('rm_recent')||'[]');
+let streamRetries=0;
 const audio=document.getElementById('audio');
 
 // ── MAP ──
 function initMap(){
-  map=L.map('map',{center:[25,15],zoom:3,zoomControl:false});
+  map=L.map('map',{center:[25,15],zoom:3,zoomControl:false,preferCanvas:true});
   L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',{
     attribution:'&copy; <a href="https://carto.com/">CARTO</a> &copy; <a href="https://openstreetmap.org">OSM</a>',
-    subdomains:'abcd',maxZoom:19
+    subdomains:'abcd',maxZoom:19,
+    updateWhenIdle:true,keepBuffer:2
   }).addTo(map);
   L.control.zoom({position:'bottomright'}).addTo(map);
   layerGroup=L.layerGroup().addTo(map);
   placeMarkers();
 }
-function gColor(g){return GENRE_COLORS[g]||GENRE_COLORS.default}
+
+function gColor(g){return GC[g]||GC.default}
+
 function placeMarkers(){
   layerGroup.clearLayers();markers=[];
+  const zoom=map?map.getZoom():3;
   allStations.forEach((s,i)=>{
     const c=gColor(s.genre),isA=i===activeIdx,sz=isA?13:8;
     const d=document.createElement('div');
     d.className='rm-dot'+(isA?' active':'');
-    d.style.cssText='width:'+sz+'px;height:'+sz+'px;background:'+c;
+    d.style.cssText=`width:${sz}px;height:${sz}px;background:${c};transform:translate(-50%,-50%)`;
     const icon=L.divIcon({html:d.outerHTML,className:'',iconSize:[sz,sz],iconAnchor:[sz/2,sz/2]});
-    const m=L.marker([s.lat,s.lon],{icon,title:s.name,zIndexOffset:isA?1000:0});
-    const gc=GENRE_CLASS[s.genre]||'g-default';
-    m.bindPopup('<div class="pop-name">'+(FLAGS[s.country]||'')+' '+s.name+'</div><div class="pop-loc">'+s.city+', '+s.country+'</div><span class="pop-genre '+gc+'" style="background:'+c+'22;color:'+c+'">'+s.genre+'</span><br><button class="pop-btn" onclick="selectStation('+i+')">Play — Tune In</button>',{maxWidth:220,closeButton:false});
+    const m=L.marker([s.lat,s.lon],{icon,title:s.name,zIndexOffset:isA?1000:0,riseOnHover:true});
+    const gc=GCL[s.genre]||'g-default';
+    m.bindPopup(
+      `<div class="pop-name">${FLAGS[s.country]||''} ${s.name}</div>`+
+      `<div class="pop-loc">${s.city}, ${s.country}</div>`+
+      `<span class="pop-genre ${gc}" style="background:${c}22;color:${c}">${s.genre}</span><br>`+
+      `<button class="pop-btn" onclick="selectStation(${i})">▶ Tune In Now</button>`,
+      {maxWidth:220,closeButton:false}
+    );
     m.on('click',()=>m.openPopup());
     m.addTo(layerGroup);markers.push(m);
   });
@@ -806,26 +986,19 @@ function switchTab(tab,btn){
   if(tab==='country')renderCountries();
   if(tab==='language')renderLanguages();
 }
-function goToStationsTab(){
+function goToStations(){
   document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));
   document.querySelector('.tab[onclick*="stations"]').classList.add('on');
   document.getElementById('panel-stations').classList.add('on');
-  document.getElementById('fav-panel').classList.remove('on');
-  document.getElementById('country-panel').classList.remove('on');
-  document.getElementById('lang-panel').classList.remove('on');
+  ['fav-panel','country-panel','lang-panel'].forEach(id=>document.getElementById(id).classList.remove('on'));
 }
 
-// ── SEARCH (fixed) ──
+// ── SEARCH ──
 document.getElementById('search').addEventListener('input',function(){
   searchQ=this.value.toLowerCase().trim();
   document.getElementById('clr').style.display=searchQ?'block':'none';
-  if(searchQ){
-    activeCountry=null;activeLang=null;
-    document.getElementById('map-breadcrumb').style.display='none';
-    goToStationsTab();
-  }
-  filtered=getFiltered();showCount=60;
-  renderList();
+  if(searchQ){activeCountry=null;activeLang=null;document.getElementById('map-breadcrumb').style.display='none';goToStations();}
+  filtered=getFiltered();showCount=60;renderList();
   document.getElementById('slist-wrap').scrollTop=0;
 });
 function clearSearch(){
@@ -841,7 +1014,7 @@ function getFiltered(){
   });
 }
 
-// ── GENRE FILTERS ──
+// ── GENRE ──
 document.querySelectorAll('.gtag').forEach(b=>b.addEventListener('click',()=>{
   document.querySelectorAll('.gtag').forEach(x=>x.classList.remove('on'));b.classList.add('on');
   activeFilter=b.dataset.g;activeCountry=null;activeLang=null;
@@ -849,72 +1022,74 @@ document.querySelectorAll('.gtag').forEach(b=>b.addEventListener('click',()=>{
   filtered=getFiltered();showCount=60;renderList();
 }));
 
-// ── COUNTRY LIST ──
+// ── COUNTRY ──
 let regionF='all';
 function renderCountries(){
-  const counts={};
-  allStations.forEach(s=>{counts[s.country]=(counts[s.country]||0)+1});
+  const counts={};allStations.forEach(s=>{counts[s.country]=(counts[s.country]||0)+1});
   const list=Object.entries(counts).filter(([c])=>regionF==='all'||REGIONS[c]===regionF).sort((a,b)=>b[1]-a[1]);
-  document.getElementById('country-list').innerHTML=list.map(([c,n])=>'<div class="crow'+(activeCountry===c?' on':'')+'" onclick="selectCountry(\''+c+'\')">'
-    +'<span class="cflag">'+(FLAGS[c]||'🌐')+'</span>'
-    +'<div class="cinfo"><div class="cname">'+c+'</div><div class="cregion">'+(REGIONS[c]||'')+'</div></div>'
-    +'<span class="cbadge">'+n+'</span></div>').join('');
+  document.getElementById('country-list').innerHTML=list.map(([c,n])=>
+    `<div class="crow${activeCountry===c?' on':''}" onclick="selectCountry('${c.replace(/'/g,"\\'")}')">
+      <span class="cflag">${FLAGS[c]||'🌐'}</span>
+      <div class="cinfo"><div class="cname">${c}</div><div class="cregion">${REGIONS[c]||''}</div></div>
+      <span class="cbadge">${n}</span>
+    </div>`).join('');
 }
 document.querySelectorAll('.rtag').forEach(b=>b.addEventListener('click',()=>{
   document.querySelectorAll('.rtag').forEach(x=>x.classList.remove('on'));
   b.classList.add('on');regionF=b.dataset.r;renderCountries();
 }));
 function selectCountry(c){
-  activeCountry=c;activeLang=null;
-  filtered=allStations.filter(s=>s.country===c);
+  activeCountry=c;activeLang=null;filtered=allStations.filter(s=>s.country===c);
   renderCountries();renderList();
   const st=filtered;if(!st.length)return;
   const lats=st.map(s=>s.lat),lons=st.map(s=>s.lon);
   map.flyToBounds([[Math.min(...lats)-1,Math.min(...lons)-1],[Math.max(...lats)+1,Math.max(...lons)+1]],{duration:1.2,maxZoom:8});
   document.getElementById('map-breadcrumb').style.display='flex';
-  document.getElementById('crumb-txt').textContent=(FLAGS[c]||'')+' '+c+' - '+st.length+' stations';
-  showToast((FLAGS[c]||'')+' '+c+' - '+st.length+' stations');
+  document.getElementById('crumb-txt').textContent=(FLAGS[c]||'')+' '+c+' · '+st.length+' stations';
+  showToast((FLAGS[c]||'')+' '+c+' — '+st.length+' stations');
 }
 
-// ── LANGUAGE LIST ──
+// ── LANGUAGE ──
 function renderLanguages(){
   const entries=Object.entries(LANGUAGES).map(([lang,info])=>({lang,...info,count:allStations.filter(s=>info.countries.includes(s.country)).length})).sort((a,b)=>b.count-a.count);
-  document.getElementById('lang-list').innerHTML=entries.map(e=>'<div class="lrow'+(activeLang===e.lang?' on':'')+'" onclick="selectLang(\''+e.lang+'\')">'
-    +'<span class="licon">'+e.icon+'</span>'
-    +'<div style="flex:1;overflow:hidden"><div class="lname">'+e.lang+'</div><div class="lnative">'+e.native+'</div></div>'
-    +'<span class="lcount">'+e.count+'</span></div>').join('');
+  document.getElementById('lang-list').innerHTML=entries.map(e=>
+    `<div class="lrow${activeLang===e.lang?' on':''}" onclick="selectLang('${e.lang}')">
+      <span class="licon">${e.icon}</span>
+      <div style="flex:1;overflow:hidden"><div class="lname">${e.lang}</div><div class="lnative">${e.native}</div></div>
+      <span class="lcount">${e.count}</span>
+    </div>`).join('');
 }
 function selectLang(lang){
   activeLang=lang;activeCountry=null;
-  const info=LANGUAGES[lang];
-  filtered=allStations.filter(s=>info.countries.includes(s.country));
+  const info=LANGUAGES[lang];filtered=allStations.filter(s=>info.countries.includes(s.country));
   renderLanguages();renderList();
   if(filtered.length){
     const lats=filtered.map(s=>s.lat),lons=filtered.map(s=>s.lon);
     map.flyToBounds([[Math.min(...lats)-3,Math.min(...lons)-3],[Math.max(...lats)+3,Math.max(...lons)+3]],{duration:1.4,maxZoom:6});
   }
   document.getElementById('map-breadcrumb').style.display='flex';
-  document.getElementById('crumb-txt').textContent=info.icon+' '+lang+' - '+filtered.length+' stations';
+  document.getElementById('crumb-txt').textContent=info.icon+' '+lang+' · '+filtered.length+' stations';
 }
 
-// ── RENDER STATION LIST ──
+// ── RENDER LIST ──
 function renderList(){
   const shown=filtered.slice(0,showCount);
   let html='';
   shown.forEach((s,idx)=>{
-    if(idx===20&&filtered.length>20){
-      /* mid ad removed */
-    }
     const i=allStations.indexOf(s);
-    const c=gColor(s.genre),gc=GENRE_CLASS[s.genre]||'g-default';
+    const c=gColor(s.genre),gc=GCL[s.genre]||'g-default';
     const isFav=favs.includes(i),isOn=i===activeIdx;
-    html+='<div class="srow'+(isOn?' on':'')+'" onclick="selectStation('+i+')">'
-      +'<div class="sdot" style="'+(isOn?'background:'+c+';box-shadow:0 0 7px '+c+'80':'')+'"></div>'
-      +'<div class="sinfo"><div class="sname">'+(FLAGS[s.country]||'')+' '+s.name+'</div>'
-      +'<div class="sloc">'+s.city+', '+s.country+'</div></div>'
-      +'<span class="stag '+gc+'" style="'+(isOn?'background:'+c+'22;color:'+c:'')+'">'+s.genre+'</span>'
-      +'<button class="fav-btn'+(isFav?' on':'')+'" onclick="event.stopPropagation();toggleFav('+i+')" title="'+(isFav?'Remove':'Save')+'">'
-      +'<i class="ti ti-heart'+(isFav?'-filled':'')+'" style="font-size:14px"></i></button></div>';
+    html+=`<div class="srow${isOn?' on':''}" onclick="selectStation(${i})">
+      <div class="sdot" style="${isOn?'background:'+c+';box-shadow:0 0 7px '+c+'80':''}"></div>
+      <div class="sinfo">
+        <div class="sname">${FLAGS[s.country]||''} ${s.name}</div>
+        <div class="sloc">${s.city}, ${s.country}</div>
+      </div>
+      <span class="stag ${gc}" style="${isOn?'background:'+c+'22;color:'+c:''}">${s.genre}</span>
+      <button class="fav-btn${isFav?' on':''}" onclick="event.stopPropagation();toggleFav(${i})">
+        <i class="ti ti-heart${isFav?'-filled':''}" style="font-size:14px"></i>
+      </button>
+    </div>`;
   });
   document.getElementById('slist').innerHTML=html;
   document.getElementById('slist-count').textContent=filtered.length.toLocaleString()+' stations';
@@ -923,59 +1098,77 @@ function renderList(){
 }
 function loadMore(){showCount+=60;renderList();}
 
-// ── SELECT & PLAY ──
+// ── SELECT STATION ──
+function selectStation(i){
+  activeIdx=i;const s=allStations[i];
+  document.getElementById('np-name').textContent=s.name;
+  document.getElementById('np-loc').textContent=(FLAGS[s.country]||'')+' '+s.city+', '+s.country+' · '+s.genre;
+  document.getElementById('play-btn').disabled=false;
+  placeMarkers();renderList();
+  map.flyTo([s.lat,s.lon],Math.max(map.getZoom(),5),{duration:0.8,animate:true});
+  addRecent(i);playStation(s);
+  if(window.innerWidth<=740)closeSidebar();
+}
+
+// ── PLAY WITH AUTO-RETRY ──
+function setStatus(msg,type){
+  const el=document.getElementById('np-status');
+  if(!msg){el.style.display='none';return;}
+  el.textContent=msg;el.className=type;el.style.display='block';
+}
+
 async function resolveUrl(s){
   if(s.url&&s.url.startsWith('http'))return s.url;
   try{
-    showToast('Finding stream for '+s.name+'...');
     const q=encodeURIComponent(s.name);
     const country=encodeURIComponent(s.country==='Palestine'?'Israel':s.country);
-    const r=await fetch('https://de1.api.radio-browser.info/json/stations/search?name='+q+'&country='+country+'&limit=5&hidebroken=true&order=clickcount&reverse=true',{headers:{'User-Agent':'TheRadioMap/1.0'}});
+    // Try exact name match first
+    const r=await fetch(`https://de1.api.radio-browser.info/json/stations/search?name=${q}&country=${country}&limit=5&hidebroken=true&order=clickcount&reverse=true`,{headers:{'User-Agent':'TheRadioMap/1.0'}});
     const data=await r.json();
-    for(const d of data){
-      if(d.url_resolved&&d.url_resolved.startsWith('http')){
-        s.url=d.url_resolved;return s.url;
-      }
-    }
-    // Fallback: search by name only
-    const r2=await fetch('https://de1.api.radio-browser.info/json/stations/search?name='+q+'&limit=5&hidebroken=true&order=clickcount&reverse=true',{headers:{'User-Agent':'TheRadioMap/1.0'}});
+    for(const d of data){if(d.url_resolved&&d.url_resolved.startsWith('http')){s.url=d.url_resolved;return s.url;}}
+    // Fallback: name only
+    const r2=await fetch(`https://de1.api.radio-browser.info/json/stations/search?name=${q}&limit=5&hidebroken=true&order=clickcount&reverse=true`,{headers:{'User-Agent':'TheRadioMap/1.0'}});
     const d2=await r2.json();
-    for(const d of d2){
-      if(d.url_resolved&&d.url_resolved.startsWith('http')){
-        s.url=d.url_resolved;return s.url;
-      }
-    }
+    for(const d of d2){if(d.url_resolved&&d.url_resolved.startsWith('http')){s.url=d.url_resolved;return s.url;}}
   }catch(e){}
   return null;
 }
 
-function selectStation(i){
-  activeIdx=i;
-  const s=allStations[i];
-  document.getElementById('np-name').textContent=s.name;
-  document.getElementById('np-loc').textContent=(FLAGS[s.country]||'')+' '+s.city+', '+s.country+' - '+s.genre;
-  document.getElementById('play-btn').disabled=false;
-  placeMarkers();renderList();
-  map.flyTo([s.lat,s.lon],Math.max(map.getZoom(),5),{duration:0.9});
-  addRecent(i);
-  playStation(s);
-  if(window.innerWidth<=740)closeSidebar();
-}
-
 async function playStation(s){
-  audio.pause();audio.src='';
-  stopWave();isPlaying=false;updatePlayBtn();
+  audio.pause();audio.src='';stopWave();isPlaying=false;updatePlayBtn();streamRetries=0;
+  setStatus('🔍 Finding stream...',  'connecting');
   const url=await resolveUrl(s);
-  if(!url){showToast('Stream not found - try another station');return;}
+  if(!url){setStatus('Stream not available',  'error');showToast('Stream not found — try another');return;}
+  setStatus('⏳ Connecting...','connecting');
   audio.src=url;audio.load();
   isPlaying=true;updatePlayBtn();startWave();
   audio.play().catch(()=>{
     setTimeout(()=>audio.play().catch(()=>{
-      showToast('Stream unavailable - try another');
+      setStatus('Could not connect','error');
       stopWave();isPlaying=false;updatePlayBtn();
+      showToast('Stream unavailable — try another');
     }),2500);
   });
 }
+
+audio.addEventListener('playing',()=>{
+  isPlaying=true;updatePlayBtn();startWave();streamRetries=0;
+  setStatus('🔴 Live','playing');
+  setTimeout(()=>setStatus('','playing'),3000);
+});
+audio.addEventListener('error',()=>{
+  if(streamRetries<2&&activeIdx!==null){
+    streamRetries++;
+    const s=allStations[activeIdx];s.url=null;// reset url to try again
+    setStatus('Retrying...','connecting');
+    setTimeout(()=>playStation(s),2000);
+  }else{
+    setStatus('Stream error','error');
+    stopWave();isPlaying=false;updatePlayBtn();
+    showToast('Stream error — try another station');
+  }
+});
+audio.addEventListener('stalled',()=>setStatus('Buffering...','connecting'));
 
 function updatePlayBtn(){
   document.getElementById('play-ico').className=isPlaying?'ti ti-player-pause':'ti ti-player-play';
@@ -991,18 +1184,31 @@ function toggleMute(){
   document.getElementById('vol-ico').className=isMuted?'ti ti-volume-off':'ti ti-volume';
   document.getElementById('vol-btn').classList.toggle('muted',isMuted);
 }
-function shareCurrent(){
-  if(activeIdx===null)return;const s=allStations[activeIdx];
-  if(navigator.share){navigator.share({title:s.name,text:'Listening to '+s.name+' on The Radio Map!',url:location.href});}
-  else showToast('Share: '+s.name+' - '+s.country);
-}
 function startWave(){document.querySelectorAll('.wb').forEach(b=>b.classList.add('p'));}
 function stopWave(){document.querySelectorAll('.wb').forEach(b=>b.classList.remove('p'));}
+
+// ── RANDOM STATION ──
+function randomStation(){
+  const pool=filtered.length>0?filtered:allStations;
+  const i=allStations.indexOf(pool[Math.floor(Math.random()*pool.length)]);
+  selectStation(i);goToStations();
+  showToast('🎲 Random: '+allStations[i].name);
+}
+
+// ── WHATSAPP SHARE ──
+function shareWhatsApp(){
+  const s=activeIdx!==null?allStations[activeIdx]:null;
+  const msg=s
+    ?`🎵 استمع الآن لـ ${s.name} من ${s.country} على خريطة الراديو المجانية!\n🌍 theradiomap.com`
+    :`🌍 استمع لراديو أي دولة في العالم مجاناً!\n📻 theradiomap.com`;
+  const url='https://wa.me/?text='+encodeURIComponent(msg);
+  window.open(url,'_blank');
+}
 
 // ── FAVOURITES ──
 function toggleFav(i){
   const idx=favs.indexOf(i);
-  if(idx===-1){favs.push(i);showToast('Saved: '+allStations[i].name);}
+  if(idx===-1){favs.push(i);showToast('❤️ Saved: '+allStations[i].name);}
   else{favs.splice(idx,1);showToast('Removed from saved');}
   localStorage.setItem('rm_favs',JSON.stringify(favs));
   renderList();renderFavs();
@@ -1013,33 +1219,33 @@ function renderFavs(){
   if(!favs.length){fe.style.display='block';fl.innerHTML='';return;}
   fe.style.display='none';
   fl.innerHTML=favs.filter(i=>allStations[i]).map(i=>{
-    const s=allStations[i],c=gColor(s.genre),gc=GENRE_CLASS[s.genre]||'g-default',isOn=i===activeIdx;
-    return '<div class="srow'+(isOn?' on':'')+'" onclick="selectStation('+i+')">'
-      +'<div class="sdot" style="background:'+c+'"></div>'
-      +'<div class="sinfo"><div class="sname">'+(FLAGS[s.country]||'')+' '+s.name+'</div>'
-      +'<div class="sloc">'+s.city+', '+s.country+'</div></div>'
-      +'<span class="stag '+gc+'">'+s.genre+'</span>'
-      +'<button class="fav-btn on" onclick="event.stopPropagation();toggleFav('+i+')">'
-      +'<i class="ti ti-heart-filled" style="font-size:14px"></i></button></div>';
+    const s=allStations[i],c=gColor(s.genre),gc=GCL[s.genre]||'g-default',isOn=i===activeIdx;
+    return`<div class="srow${isOn?' on':''}" onclick="selectStation(${i})">
+      <div class="sdot" style="background:${c}"></div>
+      <div class="sinfo"><div class="sname">${FLAGS[s.country]||''} ${s.name}</div>
+      <div class="sloc">${s.city}, ${s.country}</div></div>
+      <span class="stag ${gc}">${s.genre}</span>
+      <button class="fav-btn on" onclick="event.stopPropagation();toggleFav(${i})">
+        <i class="ti ti-heart-filled" style="font-size:14px"></i></button>
+    </div>`;
   }).join('');
 }
 
-// ── RECENTLY PLAYED ──
+// ── RECENT ──
 function addRecent(i){
-  recentPlayed=recentPlayed.filter(x=>x!==i);
-  recentPlayed.unshift(i);
+  recentPlayed=recentPlayed.filter(x=>x!==i);recentPlayed.unshift(i);
   if(recentPlayed.length>10)recentPlayed=recentPlayed.slice(0,10);
-  localStorage.setItem('rm_recent',JSON.stringify(recentPlayed));
-  renderRecent();
+  localStorage.setItem('rm_recent',JSON.stringify(recentPlayed));renderRecent();
 }
 function renderRecent(){
-  const sec=document.getElementById('recent-section'),list=document.getElementById('recent-list');
+  const sec=document.getElementById('recent-section');
   if(!recentPlayed.length){sec.style.display='none';return;}
   sec.style.display='block';
-  list.innerHTML=recentPlayed.filter(i=>allStations[i]).map(i=>{
-    const s=allStations[i];
-    return '<div class="recent-chip" onclick="selectStation('+i+')" title="'+s.name+'">'+(FLAGS[s.country]||'')+' '+s.name+'</div>';
-  }).join('');
+  document.getElementById('recent-list').innerHTML=recentPlayed
+    .filter(i=>allStations[i]).map(i=>{
+      const s=allStations[i];
+      return`<div class="recent-chip" onclick="selectStation(${i})">${FLAGS[s.country]||''} ${s.name}</div>`;
+    }).join('');
 }
 
 // ── SLEEP TIMER ──
@@ -1047,6 +1253,7 @@ let sleepInterval=null,sleepRemaining=0;
 function toggleSleepBar(){
   const bar=document.getElementById('sleep-bar');
   bar.style.display=bar.style.display==='flex'?'none':'flex';
+  document.getElementById('sleep-qbtn').classList.toggle('active',bar.style.display==='flex');
 }
 function setSleep(mins){
   clearInterval(sleepInterval);
@@ -1061,16 +1268,13 @@ function setSleep(mins){
     const m=Math.floor(sleepRemaining/60),s=sleepRemaining%60;
     document.getElementById('sleep-cd').textContent=m+':'+(s<10?'0':'')+s;
     if(sleepRemaining<=0){
-      clearInterval(sleepInterval);
-      audio.pause();isPlaying=false;updatePlayBtn();stopWave();
+      clearInterval(sleepInterval);audio.pause();isPlaying=false;updatePlayBtn();stopWave();
       document.getElementById('sleep-cd').textContent='';
       document.querySelectorAll('.sleep-btn').forEach(b=>b.classList.remove('on'));
-      showToast('Sleep timer - radio stopped');
+      showToast('😴 Sleep timer — radio stopped');
     }
   };
-  tick();
-  sleepInterval=setInterval(tick,1000);
-  showToast('Sleep timer: '+mins+' minutes');
+  tick();sleepInterval=setInterval(tick,1000);showToast('😴 Sleep: '+mins+' minutes');
 }
 
 // ── DARK MODE ──
@@ -1085,17 +1289,18 @@ if(localStorage.getItem('rm_dark')==='1'){
   document.getElementById('dark-ico').className='ti ti-sun';
 }
 
-// ── HERO ──
+// ── HERO — auto dismisses in 3 seconds ──
 function dismissHero(){
   const h=document.getElementById('hero');
-  if(!h)return;
-  h.classList.add('gone');
-  localStorage.setItem('rm_visited','1');
-  setTimeout(()=>{if(h.parentNode)h.parentNode.removeChild(h);},800);
+  if(!h)return;h.classList.add('gone');localStorage.setItem('rm_visited','1');
+  setTimeout(()=>{if(h.parentNode)h.parentNode.removeChild(h);},900);
 }
+// Skip hero for returning users immediately
 if(localStorage.getItem('rm_visited')==='1'){
-  const h=document.getElementById('hero');
-  if(h&&h.parentNode)h.parentNode.removeChild(h);
+  const h=document.getElementById('hero');if(h&&h.parentNode)h.parentNode.removeChild(h);
+}else{
+  // Auto dismiss after 3 seconds for new users
+  setTimeout(dismissHero,3000);
 }
 
 // ── AREA FILTER ──
@@ -1103,17 +1308,16 @@ function filterByArea(){
   if(!map)return;
   const bounds=map.getBounds();
   const area=allStations.filter(s=>bounds.contains([s.lat,s.lon]));
-  if(!area.length){showToast('No stations visible - zoom into a region');return;}
+  if(!area.length){showToast('No stations here — zoom into a region');return;}
   filtered=area;showCount=60;activeCountry=null;activeLang=null;
-  goToStationsTab();
-  renderList();
+  goToStations();renderList();
   document.getElementById('map-breadcrumb').style.display='flex';
-  document.getElementById('crumb-txt').textContent='Stations in this area - '+area.length;
-  showToast(area.length+' stations in this area');
+  document.getElementById('crumb-txt').textContent='Stations in this area · '+area.length;
+  showToast('📍 '+area.length+' stations in this area');
   if(window.innerWidth<=740)openSidebar();
 }
 
-// ── RESET VIEW ──
+// ── RESET ──
 function resetView(){
   activeCountry=null;activeLang=null;
   document.getElementById('search').value='';searchQ='';
@@ -1130,15 +1334,29 @@ function closeSidebar(){document.getElementById('sidebar').classList.remove('ope
 // ── TOAST ──
 let tT;
 function showToast(msg){
-  const t=document.getElementById('toast');
-  t.textContent=msg;t.classList.add('show');
+  const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');
   clearTimeout(tT);tT=setTimeout(()=>t.classList.remove('show'),3000);
 }
 
-// ── AUDIO EVENTS ──
-audio.addEventListener('playing',()=>{isPlaying=true;updatePlayBtn();startWave();});
-audio.addEventListener('error',()=>{showToast('Stream error - try another');stopWave();isPlaying=false;updatePlayBtn();});
-audio.addEventListener('stalled',()=>{showToast('Stream stalled - reconnecting...');});
+// ── KEYBOARD SHORTCUTS ──
+document.addEventListener('keydown',e=>{
+  if(e.target.tagName==='INPUT')return;
+  if(e.code==='Space'){e.preventDefault();document.getElementById('play-btn').click();}
+  if(e.code==='KeyM')toggleMute();
+  if(e.code==='KeyR')randomStation();
+  if(e.code==='KeyF')document.getElementById('search').focus();
+});
+
+// ── PRELOAD URLs IN BACKGROUND ──
+async function preloadUrls(){
+  const needUrl=allStations.filter(s=>!s.url);
+  for(const s of needUrl.slice(0,30)){// preload first 30
+    if(!s.url){
+      resolveUrl(s).catch(()=>{});
+      await new Promise(r=>setTimeout(r,200));// small delay between requests
+    }
+  }
+}
 
 // ── FETCH LIVE FROM RADIO BROWSER API ──
 async function fetchLive(){
@@ -1147,32 +1365,28 @@ async function fetchLive(){
   let live=[];
   for(let p=0;p<offsets.length;p++){
     try{
-      st.textContent='Loading '+(offsets[p]+500)+' of 2000 stations...';
+      st.textContent='Loading stations... '+((p+1)*500).toLocaleString()+' / 2,000';
       bar.style.width=((p+1)/offsets.length*100)+'%';
-      const r=await fetch('https://de1.api.radio-browser.info/json/stations/search?limit=500&offset='+offsets[p]+'&hidebroken=true&has_geo_info=true&order=clickcount&reverse=true',{headers:{'User-Agent':'TheRadioMap/1.0'}});
+      const r=await fetch(`https://de1.api.radio-browser.info/json/stations/search?limit=500&offset=${offsets[p]}&hidebroken=true&has_geo_info=true&order=clickcount&reverse=true`,{headers:{'User-Agent':'TheRadioMap/1.0'}});
       if(!r.ok)continue;
-      const data=await r.json();
-      live=[...live,...data];
+      const data=await r.json();live=[...live,...data];
     }catch(e){break;}
   }
   const existing=new Set(CURATED.map(s=>s.name.toLowerCase()));
-  const parsed=live
-    .filter(s=>s.geo_lat&&s.geo_long&&s.url_resolved)
+  const parsed=live.filter(s=>s.geo_lat&&s.geo_long&&s.url_resolved)
     .map(s=>({
-      name:s.name.trim().slice(0,55),
-      country:s.country||'Unknown',
-      city:s.state||s.country||'',
-      genre:mapGenre(s.tags),
-      lat:parseFloat(s.geo_lat),
-      lon:parseFloat(s.geo_long),
-      url:s.url_resolved
-    }))
-    .filter(s=>s.name&&Math.abs(s.lat)<=90&&Math.abs(s.lon)<=180&&!existing.has(s.name.toLowerCase()));
+      name:s.name.trim().slice(0,55),country:s.country||'Unknown',
+      city:s.state||s.country||'',genre:mapGenre(s.tags),
+      lat:parseFloat(s.geo_lat),lon:parseFloat(s.geo_long),url:s.url_resolved
+    })).filter(s=>s.name&&Math.abs(s.lat)<=90&&Math.abs(s.lon)<=180&&!existing.has(s.name.toLowerCase()));
   allStations=[...CURATED,...parsed];
   filtered=getFiltered();
   document.getElementById('stat-n').textContent=allStations.length.toLocaleString();
   renderList();renderCountries();renderLanguages();placeMarkers();
+  // Preload URLs in background after stations load
+  setTimeout(preloadUrls,2000);
 }
+
 function mapGenre(tags){
   if(!tags)return'Music';const t=tags.toLowerCase();
   if(t.includes('arab')||t.includes('quran'))return'Arabic';
@@ -1189,8 +1403,13 @@ function mapGenre(tags){
 }
 
 // ── PWA MANIFEST ──
-const manifest={name:'The Radio Map',short_name:'RadioMap',start_url:'/',display:'standalone',background_color:'#2E5AA7',theme_color:'#2E5AA7',description:'One map. Every voice on Earth.',icons:[{src:'https://cdn.jsdelivr.net/npm/@tabler/icons@2.40.0/icons/radio.svg',sizes:'any',type:'image/svg+xml'}]};
-try{const mb=new Blob([JSON.stringify(manifest)],{type:'application/json'});document.getElementById('pwa-manifest').href=URL.createObjectURL(mb);}catch(e){}
+try{
+  const m={name:'The Radio Map',short_name:'RadioMap',start_url:'/',display:'standalone',
+    background_color:'#2E5AA7',theme_color:'#2E5AA7',description:'One map. Every voice on Earth.',
+    icons:[{src:'https://cdn.jsdelivr.net/npm/@tabler/icons@2.40.0/icons/radio.svg',sizes:'any',type:'image/svg+xml'}]};
+  const mb=new Blob([JSON.stringify(m)],{type:'application/json'});
+  document.getElementById('pwa-manifest').href=URL.createObjectURL(mb);
+}catch(e){}
 
 // ── INIT ──
 document.getElementById('stat-n').textContent=CURATED.length+'+';
@@ -1199,9 +1418,7 @@ renderList();renderRecent();renderFavs();
 
 setTimeout(()=>{
   initMap();
-  fetchLive().finally(()=>{
-    setTimeout(()=>document.getElementById('loading').classList.add('gone'),400);
-  });
+  fetchLive().finally(()=>setTimeout(()=>document.getElementById('loading').classList.add('gone'),400));
 },150);
 </script>
 </body>

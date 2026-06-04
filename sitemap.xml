@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- MAIN PAGE -->
+  <url>
+    <loc>https://theradiomap.com/</loc>
+    <lastmod>2025-06-01</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://theradiomap.com/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://theradiomap.com/"/>
+  </url>
+
+  <!-- BLOG -->
+  <url>
+    <loc>https://theradiomap.com/blog</loc>
+    <lastmod>2025-06-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- COUNTRY PAGES -->
+  <url><loc>https://theradiomap.com/arabic-radio</loc><lastmod>2025-06-01</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://theradiomap.com/egypt-radio</loc><lastmod>2025-06-01</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://theradiomap.com/saudi-radio</loc><lastmod>2025-06-01</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://theradiomap.com/quran-radio</loc><lastmod>2025-06-01</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://theradiomap.com/uae-radio</loc><lastmod>2025-06-01</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://theradiomap.com/french-radio</loc><lastmod>2025-06-01</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://theradiomap.com/uk-radio</loc><lastmod>2025-06-01</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://theradiomap.com/usa-radio</loc><lastmod>2025-06-01</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+
+  <!-- BLOG POSTS -->
+  <url><loc>https://theradiomap.com/blog/best-arabic-radio-stations-online</loc><lastmod>2025-06-01</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://theradiomap.com/blog/listen-to-egyptian-radio-online-free</loc><lastmod>2025-06-01</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://theradiomap.com/blog/radio-garden-alternative</loc><lastmod>2025-06-01</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://theradiomap.com/blog/quran-radio-online-free</loc><lastmod>2025-06-01</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://theradiomap.com/blog/best-radio-stations-saudi-arabia</loc><lastmod>2025-06-01</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+</urlset>
